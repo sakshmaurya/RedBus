@@ -7,7 +7,7 @@ const customerSchema = new Schema({
   },
   googleId: {
     type: String,
-    required: false,
+    default: null,
   },
   age: {
     type: Number,
@@ -18,9 +18,14 @@ const customerSchema = new Schema({
     required: false,
   },
   email: {
-    type: String,
-    required: true,
-  },
+  type: String,
+  required: true,
+  unique: true,
+},
+password: {
+  type: String,
+  required: true,
+},
   dateOfBirth: {
     type: String,
     required: false,

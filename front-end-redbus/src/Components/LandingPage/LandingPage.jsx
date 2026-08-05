@@ -42,12 +42,7 @@ const LandingPage = () => {
     setOpenModal(false);
   };
 
-  var Routes = [
-    ["Lucknow", "Faizabad", 12],
-    ["Allahabad", "Lucknow", 1],
-    ["Lucknow", "Allahabad", 1],
-    ["Lucknow", "Delhi", 1],
-  ];
+ 
   const history = useHistory();
   const [departure, setDeparture] = React.useState("");
   const [arrival, setArrival] = React.useState("");
@@ -207,22 +202,19 @@ const LandingPage = () => {
                   );
                 }
 
-                var result = false;
-                for (var i = 0; i < Routes.length; i++) {
-                  if (
-                    Routes[i][0] == departureTemp &&
-                    Routes[i][1] == arrivalTemp
-                  ) {
-                    result = true;
-                  }
-                }
-                if (result == false) {
-                  handleOpenModal();
-                } else {
-                  history.push(
-                    `/select-bus?departure=${departureTemp}&arrival=${arrivalTemp}&date=${date}`
-                  );
-                }
+                const result = routes?.some(
+  (route) =>
+    route.departureLocation.name === departureTemp &&
+    route.arrivalLocation.name === arrivalTemp
+);
+
+if (!result) {
+  handleOpenModal();
+} else {
+  history.push(
+    `/select-bus?departure=${departureTemp}&arrival=${arrivalTemp}&date=${date}`
+  );
+}
               }}
             >
               Search Bus

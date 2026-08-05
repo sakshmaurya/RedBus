@@ -1,4 +1,5 @@
 require("dotenv").config({ path: "./config.env" });
+const authRoutes = require("./routes/authRoutes");
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -13,6 +14,7 @@ const busRoutes = require("./routes/bus");
 const bookingRoutes = require("./routes/booking");
 const customerRoutes = require("./routes/customer");
 const routeRoutes = require("./routes/route");
+
 
 app.post("/v1/api/stripe-payments", async (req, res) => {
   const { product, token } = req.body;
@@ -49,6 +51,7 @@ app.use(bookingHireRoutes);
 
 const busServiceRoutes = require("./routes/busservice");
 app.use(busServiceRoutes);
+app.use(authRoutes);
 
 const connect = () => {
   const db = mongoose.connection; // Get the mongoose connection object
@@ -64,7 +67,7 @@ const connect = () => {
 
 return mongoose.connect(
   process.env.DATABASE.replace(
-    "<PASSWORD>",
+    "VhU4ah3VjUeP2zMK",
     process.env.DATABASE_PASSWORD
   ),
   {

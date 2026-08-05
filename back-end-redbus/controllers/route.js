@@ -1,6 +1,6 @@
 const Route = require("../models/route");
 const Bus = require("../models/bus");
-const Booking = require("../models/boooking");
+const Booking = require("../models/booking");
 exports.getAllRoutes = async (req, res) => {
   let routes = await Route.find().lean().exec();
   res.send(routes);

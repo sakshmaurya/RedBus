@@ -18,10 +18,21 @@ const Payment = () => {
     (state) => state.busDetailsReducer.arrivalDetails
   );
 
-  const currentCustomer = useSelector(
-    (state) => state.authReducer.currentCustomer
-  );
-  console.log("Current Customer is: ", currentCustomer);
+  const reduxCustomer = useSelector(
+  (state) => state.authReducer.currentCustomer
+);
+
+const localCustomer = JSON.parse(
+  localStorage.getItem("user")
+);
+
+const currentCustomer = reduxCustomer || localCustomer;
+
+console.log("Current Customer is:", currentCustomer);
+
+if (!currentCustomer) {
+  console.log("User not logged in");
+}
   const operatorName = useSelector(
     (state) => state.busDetailsReducer.operatorName
   );
@@ -61,7 +72,13 @@ const Payment = () => {
   const makePayment = async (token) => {
     let myBooking = {};
     // create booking object
-    myBooking.customerId = currentCustomer._id;
+ if (!currentCustomer?._id) {
+  alert("Please login again");
+  history.push("/login");
+  return;
+}
+
+myBooking.customerId = currentCustomer._id;
     myBooking.passengerDetails = passengerDetails;
     myBooking.email = email;
     myBooking.phoneNumber = phoneNumber;

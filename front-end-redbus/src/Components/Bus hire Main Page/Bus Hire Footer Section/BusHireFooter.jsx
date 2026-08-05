@@ -43,7 +43,7 @@ const BusHireFooter = () => {
                 </div>
                 <div className={Styles.busHireFooterimageSection}>
                     <div><img src="https://www.redbus.in/bushire/static/mwebv2/header/logo_rb.svg" alt="" /></div>
-                    <div className={Styles.copyRightText}>Ⓒ 2020 ibibogroup All rights reserved</div>
+                    <div className={Styles.copyRightText}>Ⓒ 2026 RedBus All rights reserved</div>
 
                 </div>
             </div>
