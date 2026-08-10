@@ -18,14 +18,14 @@ const customerSchema = new Schema({
     required: false,
   },
   email: {
-  type: String,
-  required: true,
-  unique: true,
-},
-password: {
-  type: String,
-  required: true,
-},
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
   dateOfBirth: {
     type: String,
     required: false,
@@ -34,6 +34,38 @@ password: {
     type: String,
     required: false,
   },
+  isVerifiedTraveler: {
+    type: Boolean,
+    default: false,
+  },
+  totalPosts: {
+    type: Number,
+    default: 0,
+  },
+  totalLikesReceived: {
+    type: Number,
+    default: 0,
+  },
+  // Review-related fields
+  helpfulVotesReceived: {
+    type: Number,
+    default: 0,
+  },
+  isTrustedReviewer: {
+    type: Boolean,
+    default: false,
+  },
+  // User preferences for i18n and dark mode
+  language: {
+    type: String,
+    enum: ['en', 'hi'],
+    default: 'en'
+  },
+  theme: {
+    type: String,
+    enum: ['light', 'dark'],
+    default: 'light'
+  }
 });
 
 module.exports = mongoose.model("Customers", customerSchema);
