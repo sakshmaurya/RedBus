@@ -6,6 +6,7 @@ body {
   display: flex;
   justify-content: flex-start;
   margin: 0px;
+  min-height: 100vh;
 }
 .profileName {
   font-size: 16px;
@@ -20,18 +21,20 @@ body {
   font-size: 12px;
   font-weight: 400;
   color: #000;
+  border-radius: 4px;
 }
 .leftPannel_eachListOption {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  padding: 5% 10%;
+  padding: 15px 20px;
 }
 .leftPannel {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 .line {
   height: 1em;
@@ -40,21 +43,25 @@ body {
 }
 .seprator {
   height: 100vh;
-  width: 1em;
+  width: 1px;
   border-right: 0.5px solid rgb(222, 222, 222);
 }
 .leftPart {
-  width: 15%;
+  width: 250px;
+  flex-shrink: 0;
 }
 .leftPannel_eachListItem {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 5% 10%;
+  padding: 15px 20px;
+  transition: background-color 0.3s ease;
 }
 
 ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 .leftPannel_eachListItem_text {
   margin-left: 20px;
@@ -63,26 +70,34 @@ ul {
   color: #656161;
 }
 .rightPannel {
-  width: 70%;
-
+  flex: 1;
   height: 100%;
-  padding: 20px 10px;
+  padding: 20px 30px;
+  overflow-x: hidden;
 }
 .profileHeading {
-  margin: 30px 0 17px 120px;
+  margin: 30px 0 17px 0;
   display: inline-block;
   color: #737373;
   font-size: 19px;
   font-weight: 500;
 }
 .profilebox {
-  margin: 7px 0 15px 120px;
+  margin: 7px 0 15px 0;
   background-color: #fff;
-  width: 78%;
-  border-radius: 0.5em;
-  box-shadow: 0 0 10px #bdbcbc;
-  padding: 4% 8%;
+  width: 100%;
+  max-width: 800px;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  padding: 30px;
+  box-sizing: border-box;
+  transition: box-shadow 0.3s ease;
 }
+
+.profilebox:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
 .userDetailHeading {
   font-size: 12px;
   color: #737373;
@@ -104,7 +119,8 @@ ul {
 }
 .contactLine {
   height: 1em;
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   border-bottom: 0.5px solid rgb(222, 222, 222);
 }
 
@@ -113,8 +129,198 @@ ul {
   cursor: pointer;
   width: 100%;
   margin: 0;
-  margin-bottom: -14px;
+  margin-bottom: 0;
+  transition: background-color 0.3s ease;
 }
 .leftPannel > li:hover {
-  background-color: #ddd;
+  background-color: #f0f0f0;
+}
+
+/* Dark mode */
+body.dark-mode .ProfilePannel {
+  background-color: #1a1a1a;
+}
+
+body.dark-mode .profileName {
+  color: #ffffff;
+}
+
+body.dark-mode .walletVerified {
+  color: #000;
+}
+
+body.dark-mode .leftPannel_eachListItem_text {
+  color: #b0b0b0;
+}
+
+body.dark-mode .leftPannel > li:hover {
+  background-color: #3d3d3d;
+}
+
+body.dark-mode .rightPannel {
+  background-color: #1a1a1a;
+}
+
+body.dark-mode .profileHeading {
+  color: #ffffff;
+}
+
+body.dark-mode .profilebox {
+  background-color: #2d2d2d;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .profilebox:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+body.dark-mode .userDetailHeading {
+  color: #b0b0b0;
+}
+
+body.dark-mode .userDetailInfo {
+  color: #ffffff;
+}
+
+body.dark-mode .contactDetailsHeading {
+  color: #ffffff;
+}
+
+body.dark-mode .line,
+body.dark-mode .seprator,
+body.dark-mode .contactLine {
+  border-color: #404040;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .leftPart {
+    width: 200px;
+  }
+  
+  .leftPannel_eachListItem,
+  .leftPannel_eachListOption {
+    padding: 12px 15px;
+  }
+  
+  .rightPannel {
+    padding: 20px;
+  }
+  
+  .profilebox {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ProfilePannel {
+    flex-direction: column;
+  }
+  
+  .leftPart {
+    width: 100%;
+  }
+  
+  .seprator {
+    display: none;
+  }
+  
+  .leftPannel {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+  }
+  
+  .leftPannel_eachListItem,
+  .leftPannel_eachListOption {
+    padding: 10px 15px;
+    flex: 1;
+    min-width: 120px;
+    justify-content: center;
+  }
+  
+  .line {
+    display: none;
+  }
+  
+  .rightPannel {
+    padding: 15px;
+  }
+  
+  .profileHeading {
+    margin: 20px 0 15px 0;
+    font-size: 18px;
+  }
+  
+  .profilebox {
+    padding: 20px;
+    margin: 10px 0;
+  }
+  
+  .contactDetailsHeading {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 480px) {
+  .leftPannel {
+    flex-direction: column;
+  }
+  
+  .leftPannel_eachListItem,
+  .leftPannel_eachListOption {
+    width: 100%;
+    min-width: auto;
+    padding: 12px;
+  }
+  
+  .leftPannel_eachListItem_text {
+    font-size: 13px;
+    margin-left: 15px;
+  }
+  
+  .rightPannel {
+    padding: 10px;
+  }
+  
+  .profileHeading {
+    font-size: 16px;
+    margin: 15px 0 10px 0;
+  }
+  
+  .profilebox {
+    padding: 15px;
+  }
+  
+  .userDetailHeading {
+    font-size: 11px;
+  }
+  
+  .userDetailInfo {
+    font-size: 14px;
+  }
+  
+  .contactDetailsHeading {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 320px) {
+  .leftPannel_eachListItem_text {
+    font-size: 12px;
+    margin-left: 10px;
+  }
+  
+  .profileHeading {
+    font-size: 14px;
+  }
+  
+  .profilebox {
+    padding: 12px;
+  }
+  
+  .userDetailInfo {
+    font-size: 13px;
+  }
 }
