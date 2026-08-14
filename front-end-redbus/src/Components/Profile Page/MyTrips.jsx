@@ -14,7 +14,6 @@ const MyTrips = () => {
   React.useEffect(() => {
     if (currentCustomer) {
       let id = currentCustomer._id;
-      console.log("current customer id: ", id);
       fetchData(id);
     }
   }, [currentCustomer]);
@@ -23,7 +22,6 @@ const MyTrips = () => {
     let res = await axios.get(
       `${process.env.REACT_APP_BACKEND_URL}/v1/api/booking/${id}`
     );
-    console.log("all bookings of this customer: ", res.data);
     setAllBookings(res.data);
   }
 

@@ -1,5 +1,22 @@
 .MyTrips {
-  /* border: 1px solid red; */
   width: 100%;
   padding: 20px;
+}
+
+/* Dark mode */
+body.dark-mode .MyTrips {
+  background-color: #1a1a1a;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .MyTrips {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .MyTrips {
+    padding: 10px;
+  }
 }
