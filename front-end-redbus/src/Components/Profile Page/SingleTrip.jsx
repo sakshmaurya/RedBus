@@ -3,8 +3,6 @@ import styles from "./SingleTrip.module.css";
 import { BsCircleFill } from "react-icons/bs";
 
 const SingleTrip = ({ booking }) => {
-  console.log("Booking is : ", booking);
-  console.log(booking.passengerDetails);
   let imageArr = [
     {
       _id: {
