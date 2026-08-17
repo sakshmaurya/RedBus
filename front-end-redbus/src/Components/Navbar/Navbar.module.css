@@ -8,67 +8,353 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 5%;
-  padding-top: 20px;
-  padding-bottom: 10px;
+  padding: 15px 20px;
+  position: relative;
+  height: 70px;
 }
 .Navbar li {
   cursor: pointer;
 }
-.Navbar li:hover {
+
+body:not(.dark-mode) .Navbar li:hover {
   text-decoration: underline;
   font-weight: bold;
+}
+
+body.dark-mode .Navbar li:hover {
+  text-decoration: underline;
+  font-weight: bold;
+  color: #ffffff !important;
 }
 
 .Navbar a {
   cursor: pointer;
   text-decoration: none;
   color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-.Navbar > * {
-  /* display: inline-block; */
+
+.navIcon {
+  font-size: 16px;
+  margin-right: 4px;
 }
 
 .Navbar__listOne {
   list-style: none;
-
-  /* margin: 0 20px; */
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 .Navbar__listOne li {
   font-weight: bolder;
+  white-space: nowrap;
 }
 .Navbar__listTwo {
   list-style: none;
-  margin: 0 20px;
+  margin: 0;
 }
 
 .Navbar__listOne > li,
 .Navbar__listTwo > li {
   display: inline-block;
-  margin: 0 10px;
+  margin: 0 8px;
   color: white;
 }
 .icons {
   font-size: 25px;
 }
 .rightSide_header {
-  display: inline-block;
+  display: flex;
   margin: 0 10px;
   color: white;
-  display: flex;
-  width: 350px;
   justify-content: space-evenly;
   align-items: center;
+  gap: 15px;
+  flex-shrink: 0;
 }
 .leftSide_header {
-  display: inline-block;
+  display: flex;
   margin: 0 10px;
   color: white;
-  display: flex;
-  width: 400px;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
 }
 .leftSide_header img {
   cursor: pointer;
+  height: 40px;
+  width: auto;
+}
+
+.logo {
+  height: 45px;
+  width: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.mobileMenuButton {
+  display: none !important;
+  color: white;
+  margin-right: 10px;
+}
+
+.drawerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #d84f57;
+}
+
+.drawerLogo {
+  height: 40px;
+  width: auto;
+  cursor: pointer;
+}
+
+/* Dark Mode Overrides */
+body.dark-mode .Navbar {
+  background-color: #1a1a1a !important;
+}
+
+body.dark-mode .Navbar a {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar a:hover {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar li {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar li:hover {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listOne > li {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listOne > li:hover {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listOne > li > a {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listOne > li > a:hover {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listOne > li > a:link,
+body.dark-mode .Navbar__listOne > li > a:visited,
+body.dark-mode .Navbar__listOne > li > a:active,
+body.dark-mode .Navbar__listOne > li > a:focus {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listTwo > li {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listTwo > li:hover {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listTwo > li > a {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listTwo > li > a:hover {
+  color: #ffffff !important;
+}
+
+body.dark-mode .leftSide_header {
+  color: #ffffff !important;
+}
+
+body.dark-mode .rightSide_header {
+  color: #ffffff !important;
+}
+
+body.dark-mode .icons {
+  color: #ffffff !important;
+}
+
+body.dark-mode .navIcon {
+  color: #ffffff !important;
+}
+
+/* Force all text in navbar to white in dark mode */
+body.dark-mode .Navbar__listOne,
+body.dark-mode .Navbar__listOne * {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listOne a,
+body.dark-mode .Navbar__listOne a:hover {
+  color: #ffffff !important;
+}
+
+/* Override the default hover effect in dark mode */
+body.dark-mode .Navbar li:hover {
+  color: #ffffff !important;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+body.dark-mode .Navbar__listOne > li:hover {
+  color: #ffffff !important;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+body.dark-mode .Navbar__listOne > li > a:hover {
+  color: #ffffff !important;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* Override the default link hover color */
+body.dark-mode .Navbar a:hover {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listOne > li > a:hover {
+  color: #ffffff !important;
+}
+
+/* Remove any red color on hover in dark mode */
+body.dark-mode .Navbar a:hover,
+body.dark-mode .Navbar li:hover {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listOne a:hover,
+body.dark-mode .Navbar__listOne li:hover {
+  color: #ffffff !important;
+}
+
+body.dark-mode .drawerHeader {
+  background-color: #1a1a1a !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .Navbar {
+    flex-direction: row;
+    padding: 15px;
+    gap: 15px;
+    height: auto;
+  }
+
+  .leftSide_header {
+    width: auto;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+  }
+
+  .Navbar__listOne {
+    display: none !important;
+  }
+
+  .rightSide_header {
+    width: auto;
+    justify-content: flex-end;
+  }
+
+  .mobileMenuButton {
+    display: block !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .Navbar {
+    padding: 10px;
+  }
+  
+  .Navbar__listOne {
+    display: none;
+  }
+  
+  .Navbar__listOne > li,
+  .Navbar__listTwo > li {
+    margin: 0 5px;
+  }
+  
+  .leftSide_header img {
+    height: 35px;
+  }
+
+  .logo {
+    height: 35px;
+  }
+
+  .rightSide_header {
+    gap: 10px;
+  }
+
+  .icons {
+    font-size: 20px;
+  }
+
+  .navIcon {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Navbar {
+    padding: 10px;
+  }
+  
+  .Navbar__listOne {
+    display: none;
+  }
+  
+  .leftSide_header img {
+    height: 30px;
+  }
+
+  .logo {
+    height: 30px;
+  }
+  
+  .icons {
+    font-size: 18px;
+  }
+  
+  .rightSide_header {
+    gap: 8px;
+  }
+
+  .navIcon {
+    display: none;
+  }
+}
+
+@media (max-width: 320px) {
+  .Navbar__listOne {
+    display: none;
+  }
+  
+  .Navbar__listOne > li,
+  .Navbar__listTwo > li {
+    margin: 0 3px;
+  }
+
+  .logo {
+    height: 25px;
+  }
 }
