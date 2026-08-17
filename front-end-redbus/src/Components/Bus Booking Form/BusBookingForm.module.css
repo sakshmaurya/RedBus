@@ -16,12 +16,14 @@ body {
   color: #1c1c1c;
   font-size: 14px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 .ContentBlock {
-  margin: 20px 20px;
+  margin: 20px;
   box-shadow: 0 0 4px 0 hsla(0, 0%, 64%, 0.5);
-  padding: 20px 40px 20px 40px;
+  padding: 20px;
   background: #fff;
+  box-sizing: border-box;
 }
 .form_label {
   margin-top: 20px;
@@ -42,6 +44,7 @@ body {
   font-size: 14px;
   margin: 0.8em 0 0;
   color: rgba(74, 74, 74, 0.86) !important;
+  box-sizing: border-box;
 }
 .form_radio_label {
   padding: 0 0.45em;
@@ -55,6 +58,7 @@ body {
   height: 20px;
   margin-right: 10px;
   cursor: pointer;
+  flex-shrink: 0;
 }
 .passengerContactMsg {
   margin-bottom: 1.5em;
@@ -64,6 +68,8 @@ body {
   font-size: 12px;
   padding: 3px 20px;
   width: fit-content;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 .insure_title {
   margin: 1em;
@@ -72,6 +78,7 @@ body {
   font-weight: 600;
   font-size: 12px;
   color: #1c1c1c;
+  box-sizing: border-box;
 }
 .proceed_to_button {
   background-color: #e9555d !important;
@@ -89,4 +96,78 @@ body {
   text-align: center;
   background-color: #d84e55;
   color: #fff;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .ContentBlock {
+    margin: 15px;
+    padding: 15px;
+  }
+  
+  .passenger_mainTitle {
+    font-size: 17px;
+  }
+  
+  .passangerInfoTitle {
+    font-size: 13px;
+  }
+  
+  .form_label {
+    font-size: 0.8em;
+  }
+  
+  .form_input {
+    font-size: 13px;
+  }
+  
+  .proceed_to_button {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ContentBlock {
+    margin: 10px;
+    padding: 12px;
+  }
+  
+  .passenger_mainTitle {
+    font-size: 16px;
+  }
+  
+  .passangerInfoTitle {
+    font-size: 12px;
+  }
+  
+  .form_input {
+    font-size: 12px;
+    padding: 0.4em;
+  }
+  
+  .form_radio_label {
+    font-size: 13px;
+    margin: 0 10px 0 0;
+  }
+  
+  .passengerContactMsg {
+    font-size: 11px;
+    padding: 3px 15px;
+  }
+  
+  .insure_title {
+    font-size: 11px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 320px) {
+  .passenger_mainTitle {
+    font-size: 14px;
+  }
+  
+  .form_input {
+    font-size: 11px;
+  }
 }

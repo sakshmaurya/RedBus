@@ -3,11 +3,13 @@ import Styles from "./BusBookingForm.module.css";
 import { MdAccountCircle } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
 import { FaWhatsapp } from "react-icons/fa";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { updateBookingDetails } from "../../Redux/BookBus/action";
+import { useTranslation } from "react-i18next";
 
 const BusBookingForm = () => {
+  const { t } = useTranslation();
   const seatsArray = useSelector((state) => state.busDetailsReducer.seats);
 
   var passengerArray = [];
@@ -25,10 +27,38 @@ const BusBookingForm = () => {
   const [passIsBusiness, setPassIsBusiness] = React.useState(false);
   const [passIsCovidDonate, setPassIsCovidDonate] = React.useState(false);
   const [passInsurance, setPassInsurance] = React.useState(false);
+  const [error, setError] = React.useState("");
 
-  let history = useHistory();
+  let navigate = useNavigate();
   let dispatch = useDispatch();
   const handleProceedToPay = () => {
+    setError("");
+
+    // Validation
+    for (let i = 0; i < passDetails.length; i++) {
+      if (!passDetails[i].name || passDetails[i].name.trim().length < 2) {
+        setError(`Passenger ${i + 1}: Please enter a valid name`);
+        return;
+      }
+      if (!passDetails[i].age || passDetails[i].age < 1 || passDetails[i].age > 100) {
+        setError(`Passenger ${i + 1}: Age must be between 1 and 100`);
+        return;
+      }
+      if (!passDetails[i].gender) {
+        setError(`Passenger ${i + 1}: Please select gender`);
+        return;
+      }
+    }
+
+    if (!passEmail || !passEmail.includes("@")) {
+      setError("Please enter a valid email address");
+      return;
+    }
+    if (!passPhNo || passPhNo.length < 10) {
+      setError("Please enter a valid phone number (at least 10 digits)");
+      return;
+    }
+
     const payload1 = {
       key: "passengerDetails",
       value: passDetails,
@@ -66,7 +96,7 @@ const BusBookingForm = () => {
     dispatch(updateBookingDetails(payload5));
     dispatch(updateBookingDetails(payload6));
 
-    history.push("/payment-page");
+    navigate("/payment-page");
   };
 
   const handlePassName = (e, indexNo) => {
@@ -87,18 +117,21 @@ const BusBookingForm = () => {
     setPassDetails(newArr);
   };
 
-  console.log(
-    passDetails,
-    passPhNo,
-    passEmail,
-    passIsBusiness,
-    passIsCovidDonate,
-    passInsurance
-  );
-
   return (
     <div style={{ border: "1px solid black" }}>
-      <h4 className={Styles.passenger_mainTitle}>Enter Passenger Details</h4>
+      <h4 className={Styles.passenger_mainTitle}>{t('booking.passengerDetails')}</h4>
+      {error && (
+        <div style={{
+          color: "#d84e55",
+          backgroundColor: "#ffebee",
+          padding: "10px",
+          borderRadius: "4px",
+          margin: "10px 20px",
+          fontSize: "14px"
+        }}>
+          {error}
+        </div>
+      )}
       <div
         style={{
           height: "500px",
@@ -112,7 +145,7 @@ const BusBookingForm = () => {
               <div className={Styles.passangerInfoTitle}>
                 <MdAccountCircle style={{ fontSize: "25px", color: "teal" }} />
                 <span style={{ marginLeft: "10px", marginTop: "2px" }}>
-                  Passenger Information
+                  {t('booking.passengerInformation')}
                 </span>
               </div>
               <div
@@ -123,7 +156,7 @@ const BusBookingForm = () => {
                   alignItems: "center",
                 }}
               >
-                <span>Passenger {index + 1}</span>
+                <span>{t('booking.passenger')} {index + 1}</span>
                 <div
                   style={{
                     height: "12px",
@@ -131,12 +164,12 @@ const BusBookingForm = () => {
                     width: "2px",
                   }}
                 ></div>
-                <span>Seat {seatNo}</span>
+                <span>{t('booking.seat')} {seatNo}</span>
               </div>
-              <div className={Styles.form_label}>Name</div>
+              <div className={Styles.form_label}>{t('booking.passengerName')}</div>
               <input
                 className={Styles.form_input}
-                placeholder="Name"
+                placeholder={t('booking.passengerName')}
                 type="text"
                 name="name"
                 value={passDetails[index]["name"]}
@@ -144,7 +177,7 @@ const BusBookingForm = () => {
               />
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                  <div className={Styles.form_label}>Gender</div>
+                  <div className={Styles.form_label}>{t('booking.gender')}</div>
                   <div
                     style={{
                       display: "flex",
@@ -159,21 +192,21 @@ const BusBookingForm = () => {
                       name={"gender" + index}
                       value="Male"
                     />
-                    <div className={Styles.form_radio_label}>Male</div>
+                    <div className={Styles.form_radio_label}>{t('booking.male')}</div>
                     <input
                       className={Styles.radioButton}
                       type="radio"
                       name={"gender" + index}
                       value="Female"
                     />
-                    <div className={Styles.form_radio_label}>Female</div>
+                    <div className={Styles.form_radio_label}>{t('booking.female')}</div>
                   </div>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                  <div className={Styles.form_label}>Age</div>
+                  <div className={Styles.form_label}>{t('booking.age')}</div>
                   <input
                     className={Styles.form_input}
-                    placeholder="Age"
+                    placeholder={t('booking.age')}
                     type="text"
                     name="age"
                     value={passDetails[index]["age"]}
@@ -190,22 +223,22 @@ const BusBookingForm = () => {
         <div className={Styles.passangerInfoTitle}>
           <MdEmail style={{ fontSize: "25px", color: "#f1af43" }} />
           <span style={{ marginLeft: "10px", marginTop: "2px" }}>
-            Contact Details
+            {t('booking.contactDetails')}
           </span>
         </div>
         <div className={Styles.passengerContactMsg}>
-          Your ticket will be sent to these details
+          {t('booking.ticketMessage')}
         </div>
-        <div className={Styles.form_label}>Email</div>
+        <div className={Styles.form_label}>{t('booking.email')}</div>
         <input
           className={Styles.form_input}
-          placeholder="Email"
+          placeholder={t('booking.email')}
           type="email"
           name="email"
           value={passEmail}
           onChange={(e) => setPassEmail(e.target.value)}
         />
-        <div className={Styles.form_label}>Phone</div>
+        <div className={Styles.form_label}>{t('booking.phone')}</div>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <input
             className={Styles.form_input}
@@ -215,7 +248,7 @@ const BusBookingForm = () => {
           />
           <input
             className={Styles.form_input}
-            placeholder="Phone"
+            placeholder={t('booking.phone')}
             type="number"
             name="phone"
             value={passPhNo}
