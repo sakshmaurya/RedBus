@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./Title.module.css";
-import ApartmentIcon from "@material-ui/icons/Apartment";
-import TodayIcon from "@material-ui/icons/Today";
-import { useHistory } from "react-router-dom";
+import ApartmentIcon from "@mui/icons-material/Apartment";
+import TodayIcon from "@mui/icons-material/Today";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getRoutes } from "../../../Redux/routes/action";
 const Title = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [departure, setDeparture] = React.useState("");
   const [arrival, setArrival] = React.useState("");
   const [date, setDate] = React.useState("");
@@ -24,7 +24,6 @@ const Title = () => {
   }, [dispatch]);
 
   const routes = useSelector((state) => state.routesReducer.routes);
-  console.log("Routes are:", routes);
 
   const onDepartureChange = (e) => {
     setDeparture(e.target.value);
