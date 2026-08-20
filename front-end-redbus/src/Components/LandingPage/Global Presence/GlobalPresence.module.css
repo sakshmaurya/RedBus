@@ -1,23 +1,24 @@
 
 .globalPresenceContainer{
     margin-bottom: 90px;
-   padding-bottom: 20px;
-    padding-top: 20px;
-    min-width: 1000px;
+    padding-bottom: 40px;
+    padding-top: 40px;
+    min-width: auto;
     max-width: 1300px;
     margin: 0 auto;
     color: #4a4a4a;
     font-size: 14px;
     font-weight: 400;
-    max-height: 550px;
-   border-bottom: 1px solid #ccc;
+    max-height: auto;
+    border-bottom: 1px solid #ccc;
+    padding: 40px 20px;
 }
 .globalPresenceHeading{
     font-weight: 800;
     text-align: center;
     font-size: 30px;
     margin-top: 30px;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
     line-height: 1.1em;
     color: #4a4a4a;
 }
@@ -41,4 +42,99 @@
     text-align: center;
     color: #4a4a4a;
     font-size: 14px;
+}
+
+/* Dark mode */
+body.dark-mode .globalPresenceContainer {
+    color: #ffffff;
+    border-color: #404040;
+}
+
+body.dark-mode .globalPresenceHeading {
+    color: #ffffff;
+}
+
+body.dark-mode .countryName {
+    color: #b0b0b0;
+}
+
+body.dark-mode .para {
+    color: #b0b0b0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+    .globalPresenceContainer {
+        max-width: 95%;
+        padding: 30px 15px;
+    }
+    
+    .globalPresenceHeading {
+        font-size: 26px;
+        margin-bottom: 50px;
+    }
+    
+    .numbers {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .globalPresenceContainer {
+        margin-bottom: 60px;
+        padding: 25px 15px;
+    }
+    
+    .globalPresenceHeading {
+        font-size: 24px;
+        margin-bottom: 40px;
+    }
+    
+    .numbers {
+        font-size: 36px;
+    }
+    
+    .para {
+        width: 100%;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .globalPresenceContainer {
+        margin-bottom: 40px;
+        padding: 20px 10px;
+    }
+    
+    .globalPresenceHeading {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .numbers {
+        font-size: 32px;
+    }
+    
+    .countryName {
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+    
+    .para {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 320px) {
+    .globalPresenceHeading {
+        font-size: 18px;
+    }
+    
+    .numbers {
+        font-size: 28px;
+    }
+    
+    .countryName {
+        font-size: 11px;
+    }
 }

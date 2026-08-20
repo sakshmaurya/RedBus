@@ -1,13 +1,15 @@
 
 import React from 'react'
 import Styles from './GlobalPresence.module.css'
+import { useTranslation } from 'react-i18next';
 
 const GlobalPresence = () => {
+    const { t } = useTranslation();
     return (
         <div>
             <div style = {{backgroundColor : "#f1f1f1"}}>
             <div className = {Styles.globalPresenceContainer}>
-            <div className = {Styles.globalPresenceHeading}>OUR GLOBAL PRESENCE</div>
+            <div className = {Styles.globalPresenceHeading}>{t('home.globalPresence')}</div>
             <div style = {{display : "flex" , justifyContent : "space-evenly", marginTop : "60px"}}>
                 <div style = {{display : "flex" , flexDirection : "column"}}>
                     <div>
@@ -51,22 +53,22 @@ const GlobalPresence = () => {
             </div>
             </div>
             <div className = {Styles.globalPresenceContainer}>
-            <div className = {Styles.globalPresenceHeading}>THE NUMBERS ARE GROWING</div>
+            <div className = {Styles.globalPresenceHeading}>{t('stats.numbersGrowing')}</div>
             <div style = {{display : "flex" , justifyContent : "space-evenly", marginTop : "60px"}}>
                 <div style = {{display : "flex" , flexDirection : "column", alignItems : "center"}}>
-                    <div className = {Styles.countryName}>customers</div>
-                    <div className = {Styles.numbers}>23 M</div>
-                    <div className = {Styles.para}>redBus is trusted by over 23 million happy customers globally</div>
+                    <div className = {Styles.countryName}>{t('stats.customers')}</div>
+                    <div className = {Styles.numbers}>{t('stats.customersCount')}</div>
+                    <div className = {Styles.para}>{t('stats.customersDesc')}</div>
                 </div>
                 <div style = {{display : "flex" , flexDirection : "column", alignItems : "center"}}>
-                    <div className = {Styles.countryName}>OPERATORS</div>
-                    <div className = {Styles.numbers}>2600</div>
-                    <div className = {Styles.para}>network of over 2600 bus operators worldwide</div>
+                    <div className = {Styles.countryName}>{t('stats.operators')}</div>
+                    <div className = {Styles.numbers}>{t('stats.operatorsCount')}</div>
+                    <div className = {Styles.para}>{t('stats.operatorsDesc')}</div>
                 </div>
                 <div style = {{display : "flex" , flexDirection : "column", alignItems : "center", paddingBottom : "40px"}}>
-                    <div className = {Styles.countryName}>BUS TICKETS</div>
-                    <div className = {Styles.numbers}>180+ M</div>
-                    <div className = {Styles.para}>Over 180 million trips booked using redBus</div>
+                    <div className = {Styles.countryName}>{t('stats.busTickets')}</div>
+                    <div className = {Styles.numbers}>{t('stats.busTicketsCount')}</div>
+                    <div className = {Styles.para}>{t('stats.busTicketsDesc')}</div>
                 </div>
             </div>
             </div>
