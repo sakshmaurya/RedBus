@@ -5,7 +5,7 @@
     margin-bottom: 70px;
     margin-top: 30px;
     padding: 0 20px;
-    min-width: 1000px;
+    min-width: auto;
     max-width: 1300px;
     margin: 0 auto;
     color: #4a4a4a;
@@ -17,7 +17,7 @@
     text-align: center;
     font-size: 30px;
     margin-top: 30px;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
     line-height: 1.1em;
     color: #4a4a4a;
 }
@@ -30,4 +30,87 @@
     font-size: 14px;
     margin-bottom: 15px;
     margin-top: 34px;
+}
+
+/* Dark mode */
+body.dark-mode .awardsContainer {
+    color: #ffffff;
+}
+
+body.dark-mode .awardHeading {
+    color: #ffffff;
+}
+
+body.dark-mode .awardsPara {
+    color: #b0b0b0;
+}
+
+body.dark-mode .borderSeprator {
+    border-color: #404040;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+    .awardsContainer {
+        max-width: 95%;
+        padding: 0 15px;
+    }
+    
+    .awardHeading {
+        font-size: 26px;
+        margin-bottom: 50px;
+    }
+    
+    .awardsPara {
+        width: 100%;
+        font-size: 13px;
+        letter-spacing: 2px;
+    }
+}
+
+@media (max-width: 768px) {
+    .awardsContainer {
+        margin-bottom: 50px;
+        padding: 0 15px;
+    }
+    
+    .awardHeading {
+        font-size: 24px;
+        margin-bottom: 40px;
+    }
+    
+    .awardsPara {
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .awardsContainer {
+        margin-bottom: 40px;
+        padding: 0 10px;
+    }
+    
+    .awardHeading {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .awardsPara {
+        font-size: 12px;
+        letter-spacing: 1px;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 320px) {
+    .awardHeading {
+        font-size: 18px;
+    }
+    
+    .awardsPara {
+        font-size: 11px;
+        letter-spacing: 0.5px;
+    }
 }
