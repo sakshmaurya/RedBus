@@ -1,26 +1,29 @@
 import React from "react";
 import styles from "./BusTracker.module.css";
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 import { v4 as uuidv4 } from "uuid";
-const data = [
-  {
-    type: "Buses",
-    number: "10,000",
-    details: "Total buses currently being tracked",
-  },
-  {
-    type: "Routes",
-    number: "60,000",
-    details: "Total routes covered by live tracking",
-  },
-  {
-    type: "Users",
-    number: "40,000",
-    details: "Total users using Track My Bus feature",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const BusTracker = () => {
+  const { t } = useTranslation();
+  const data = [
+    {
+      type: t('trackBus.buses'),
+      number: t('trackBus.busesCount'),
+      details: t('trackBus.busesDesc'),
+    },
+    {
+      type: t('trackBus.routes'),
+      number: t('trackBus.routesCount'),
+      details: t('trackBus.routesDesc'),
+    },
+    {
+      type: t('trackBus.users'),
+      number: t('trackBus.usersCount'),
+      details: t('trackBus.usersDesc'),
+    },
+  ];
+
   return (
     <div className={styles.mainContainer}>
       <div className={styles.upperFlexContainer}>
@@ -31,13 +34,12 @@ const BusTracker = () => {
           />
         </div>
         <div className={styles.writingBox}>
-          <h2>TRACK MY BUS - Smarter Way To Travel</h2>
+          <h2>{t('trackBus.title')}</h2>
           <p>
-            Track your bus with our ‘Track My Bus’ feature and know the exact
-            location in real-time.Stay informed and keep your family informed!
+            {t('trackBus.description')}
           </p>
           <Button variant="outlined" color="primary">
-            know more
+            {t('safety.knowMore2')}
           </Button>
         </div>
       </div>
