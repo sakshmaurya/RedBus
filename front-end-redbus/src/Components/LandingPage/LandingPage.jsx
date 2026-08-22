@@ -4,34 +4,22 @@ import BusTracker from "./BusTracker/BusTracker";
 import Coupon from "./CouponSection/Coupon";
 import Safety from "./SafetySection/Safety";
 import styles from "./LandingPage.module.css";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getRoutes } from "../../Redux/routes/action";
 import Awards from "./Awards and Recognition/Awards";
 import GlobalPresence from "./Global Presence/GlobalPresence";
-import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
-import Fade from "@material-ui/core/Fade";
-import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@mui/material/Modal";
+import Backdrop from "@mui/material/Backdrop";
+import Fade from "@mui/material/Fade";
+import Box from "@mui/material/Box";
 import RoutesModal from "./RoutesModal";
-
-const useStyles = makeStyles((theme) => ({
-  modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-}));
+import { useTranslation } from "react-i18next";
 
 const LandingPage = () => {
+  const { t } = useTranslation();
+  
   //modal items
-  const classes = useStyles();
   const [openModal, setOpenModal] = React.useState(false);
 
   const handleOpenModal = () => {
@@ -43,7 +31,7 @@ const LandingPage = () => {
   };
 
  
-  const history = useHistory();
+  const navigate = useNavigate();
   const [departure, setDeparture] = React.useState("");
   const [arrival, setArrival] = React.useState("");
   const [date, setDate] = React.useState("");
@@ -60,7 +48,6 @@ const LandingPage = () => {
   }, [dispatch]);
 
   const routes = useSelector((state) => state.routesReducer.routes);
-  console.log("Routes are:", routes);
 
   const onDepartureChange = (e) => {
     let value = e.target.value;
@@ -80,9 +67,7 @@ const LandingPage = () => {
       let filteredSources = allSources.filter((source) =>
         source.toLowerCase().includes(value.toLowerCase())
       );
-      // console.log("Can search: ", routes.length, filteredSources);
       if (filteredSources.length > 0 && value) {
-        console.log("hey true");
         setFilteredSources(filteredSources);
         setDisplayDepartureDropdown(true);
       } else {
@@ -125,7 +110,7 @@ const LandingPage = () => {
             <div className={styles.LandingPage__form__departure__input}>
               <input
                 type="text"
-                placeholder="Source"
+                placeholder={t('home.from')}
                 value={departure}
                 onChange={onDepartureChange}
               />
@@ -151,7 +136,7 @@ const LandingPage = () => {
             <div className={styles.LandingPage__form__arrival__input}>
               <input
                 type="text"
-                placeholder="Destination"
+                placeholder={t('home.to')}
                 value={arrival}
                 onChange={onArrivalChange}
               />
@@ -176,7 +161,7 @@ const LandingPage = () => {
           <div className={styles.LandingPage__form__date}>
             <input
               type="date"
-              placeholder="Date"
+              placeholder={t('home.date')}
               value={date}
               onChange={(e) => {
                 setDate(e.target.value);
@@ -211,13 +196,13 @@ const LandingPage = () => {
 if (!result) {
   handleOpenModal();
 } else {
-  history.push(
+  navigate(
     `/select-bus?departure=${departureTemp}&arrival=${arrivalTemp}&date=${date}`
   );
 }
               }}
             >
-              Search Bus
+              {t('home.searchButton')}
             </button>
           </div>
         </div>
@@ -226,7 +211,6 @@ if (!result) {
         <Modal
           aria-labelledby="transition-modal-title"
           aria-describedby="transition-modal-description"
-          className={classes.modal}
           open={openModal}
           onClose={handleCloseModal}
           closeAfterTransition
@@ -236,11 +220,18 @@ if (!result) {
           }}
         >
           <Fade in={openModal}>
-            <div className={classes.paper}>
-              <p id="transition-modal-description">
-                <RoutesModal />
-              </p>
-            </div>
+            <Box sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              bgcolor: 'background.paper',
+              border: '2px solid #000',
+              boxShadow: 24,
+              p: 4,
+            }}>
+              <RoutesModal />
+            </Box>
           </Fade>
         </Modal>
       </div>
