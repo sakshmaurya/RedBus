@@ -13,7 +13,6 @@ const BusHire = () => {
   const currentCustomer = useSelector(
     (state) => state.authReducer.currentCustomer
   );
-  console.log("BusHire: ", currentCustomer);
   const handleClick = () => {
     if (active === "Type of trip") {
       setActive("Bus Hire Form");

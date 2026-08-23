@@ -4,13 +4,15 @@ body {
 .imageBanner {
   width: 100%;
   position: inherit;
+  min-height: 400px;
 }
 .bannerElementDiv {
   position: absolute;
-  width: 400px;
+  width: 90%;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
-  left: 15%;
+  left: 5%;
   top: 8%;
 }
 .bannerBusHireText {
@@ -29,7 +31,7 @@ body {
 .withBusHireYouCanGet,
 .VehicleYouCanGet,
 .whyBookWithBushire {
-  margin: 3% 7%;
+  margin: 3% 5%;
   display: flex;
   flex-direction: column;
 }
@@ -40,9 +42,10 @@ body {
 }
 .bookInEaschStep {
   margin-top: 2%;
-  border-radius: 5%;
+  border-radius: 8px;
   background-color: #f9ecf2;
-  width: 37%;
+  width: 90%;
+  max-width: 500px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -56,8 +59,10 @@ body {
 }
 .BusHireFeatures {
   background-color: #3e3e52;
-  width: 219px;
-  height: 214px;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  min-height: 214px;
   border-radius: 8px;
   border: 2px solid #ddd;
   background-color: #fff;
@@ -80,8 +85,9 @@ body {
   margin-top: 10px;
 }
 .rcommutediv {
-  width: 33%;
-  margin: 5% 7%;
+  width: 90%;
+  max-width: 400px;
+  margin: 5% auto;
   padding: 12px 12px 8px;
   border-radius: 2px;
   background-color: #e6eeff;
@@ -108,14 +114,16 @@ body {
 .tripTypecontainer {
   box-shadow: 0 4px 8px 0 rgba(100, 100, 100, 0.5);
   display: flex;
-  width: 30%;
+  width: 90%;
+  max-width: 350px;
   flex-direction: column;
   margin-top: 8px;
   padding: 0;
   box-sizing: border-box;
   position: fixed;
-  right: 4%;
+  right: 2%;
   top: 6.5%;
+  z-index: 100;
 }
 .hireVehicleHeading {
   background-color: #d84e55;
@@ -128,7 +136,8 @@ body {
 }
 .journeyTypeDiv {
   cursor: pointer;
-  height: 116px;
+  height: auto;
+  min-height: 116px;
   border-radius: 4px;
   box-shadow: 0 4px 8px 0 hsla(0, 0%, 75%, 0.5);
   border: 1px solid #f0f1f2;
@@ -152,8 +161,10 @@ body {
 }
 .vehicleTypeImage {
   margin: 30px 0px;
-  width: 700px;
-  height: 150px;
+  width: 90%;
+  max-width: 700px;
+  height: auto;
+  min-height: 150px;
   position: relative;
 }
 .vehicleText {
@@ -172,7 +183,8 @@ body {
   margin-top: 4px;
 }
 .whyBookWithBushire_firstFeature {
-  width: 462px;
+  width: 90%;
+  max-width: 462px;
   height: 160px;
   object-fit: contain;
   margin-bottom: 24px;
@@ -182,7 +194,8 @@ body {
   margin: 20px 0px;
 }
 .whyBookWithBushire_secondFeature {
-  width: 462px;
+  width: 90%;
+  max-width: 462px;
   height: 160px;
   object-fit: contain;
   margin-bottom: 24px;
@@ -192,7 +205,8 @@ body {
   margin: 20px 0px;
 }
 .whyBookWithBushire_thirdFeature {
-  width: 462px;
+  width: 90%;
+  max-width: 462px;
   height: 160px;
   object-fit: contain;
   margin-bottom: 24px;
@@ -207,7 +221,6 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
   padding: 20px;
 }
 .whyBookWithBushire_insideFeature_text {
@@ -226,14 +239,228 @@ body {
   font-size: 14px;
   line-height: 1.57;
   color: #3e3e52;
-  width: 40%;
+  width: 90%;
+  max-width: 40%;
   margin-top: 20px;
 }
 .list {
-  width: 40%;
+  width: 90%;
+  max-width: 40%;
   margin-top: 20px;
   font-size: 14px;
   line-height: 1.87;
   color: #3e3e52;
   text-decoration: crimson;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .bannerElementDiv {
+    width: 80%;
+    left: 10%;
+  }
+  
+  .bannerBusHireText {
+    font-size: 32px;
+  }
+  
+  .bannerBusHireSubText {
+    font-size: 18px;
+  }
+  
+  .tripTypecontainer {
+    width: 85%;
+    right: 1%;
+  }
+  
+  .vehicleTypeImage {
+    width: 95%;
+  }
+}
+
+@media (max-width: 768px) {
+  .bannerElementDiv {
+    width: 90%;
+    left: 5%;
+    top: 5%;
+  }
+  
+  .bannerBusHireText {
+    font-size: 28px;
+    margin-top: 20px;
+  }
+  
+  .bannerBusHireSubText {
+    font-size: 16px;
+  }
+  
+  .bookInEasyStepsdiv,
+  .withBusHireYouCanGet,
+  .VehicleYouCanGet,
+  .whyBookWithBushire {
+    margin: 5% 3%;
+  }
+  
+  .bookInEasySteps_heading {
+    font-size: 20px;
+  }
+  
+  .bookInEaschStep {
+    width: 95%;
+    padding: 10px 20px;
+  }
+  
+  .bookInEaschStepText {
+    font-size: 18px;
+    margin-left: 15px;
+  }
+  
+  .BusHireFeatures {
+    width: 48%;
+    margin-right: 2%;
+    margin-bottom: 15px;
+  }
+  
+  .rcommutediv {
+    width: 95%;
+  }
+  
+  .tripTypecontainer {
+    position: relative;
+    width: 95%;
+    margin: 20px auto;
+    right: auto;
+    top: auto;
+  }
+  
+  .hireVehicleHeading {
+    font-size: 22px;
+    padding: 15px;
+  }
+  
+  .journeyTypeDiv {
+    padding: 15px;
+    min-height: auto;
+  }
+  
+  .vehicleTypeImage {
+    width: 95%;
+    margin: 20px auto;
+  }
+  
+  .vehicleText > h3 {
+    font-size: 20px;
+  }
+  
+  .vehicleText > p {
+    font-size: 14px;
+  }
+  
+  .whyBookWithBushire_firstFeature,
+  .whyBookWithBushire_secondFeature,
+  .whyBookWithBushire_thirdFeature {
+    width: 95%;
+  }
+  
+  .whyBookWithBushire_insideFeature_text > h3 {
+    font-size: 20px;
+  }
+  
+  .hireuswhenever_paraSection,
+  .list {
+    width: 95%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .bannerBusHireText {
+    font-size: 24px;
+    margin-top: 15px;
+  }
+  
+  .bannerBusHireSubText {
+    font-size: 14px;
+  }
+  
+  .bookInEasySteps_heading {
+    font-size: 18px;
+  }
+  
+  .bookInEaschStep {
+    flex-direction: column;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .bookInEaschStepText {
+    font-size: 16px;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  
+  .BusHireFeatures {
+    width: 100%;
+    margin-right: 0;
+  }
+  
+  .hireVehicleHeading {
+    font-size: 18px;
+    padding: 12px;
+  }
+  
+  .journeyText {
+    font-size: 14px;
+  }
+  
+  .journeySubText {
+    font-size: 12px;
+  }
+  
+  .vehicleText > h3 {
+    font-size: 16px;
+  }
+  
+  .vehicleText > p {
+    font-size: 12px;
+  }
+  
+  .whyBookWithBushire_insideFeature {
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .whyBookWithBushire_insideFeature_text {
+    height: auto;
+  }
+  
+  .whyBookWithBushire_insideFeature_text > h3 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 320px) {
+  .bannerBusHireText {
+    font-size: 20px;
+  }
+  
+  .bannerBusHireSubText {
+    font-size: 12px;
+  }
+  
+  .bookInEasySteps_heading {
+    font-size: 16px;
+  }
+  
+  .bookInEaschStepText {
+    font-size: 14px;
+  }
+  
+  .hireVehicleHeading {
+    font-size: 16px;
+  }
+  
+  .journeyText {
+    font-size: 12px;
+  }
 }
