@@ -3,8 +3,6 @@ import styles from "./SingleHiredBus.module.css";
 import { BsCircleFill } from "react-icons/bs";
 
 const SingleHiredBus = ({ booking }) => {
-  console.log("Booking is : ", booking);
-  console.log(booking.passengerDetails);
   let imageArr = [
     {
       _id: {

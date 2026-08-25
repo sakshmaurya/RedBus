@@ -1,5 +1,22 @@
 .HiredBuses {
-  /* border: 1px solid red; */
   width: 100%;
   padding: 20px;
+}
+
+/* Dark mode */
+body.dark-mode .HiredBuses {
+  background-color: #1a1a1a;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .HiredBuses {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .HiredBuses {
+    padding: 10px;
+  }
 }

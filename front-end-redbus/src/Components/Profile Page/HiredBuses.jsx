@@ -13,7 +13,6 @@ const HiredBuses = () => {
   React.useEffect(() => {
     if (currentCustomer) {
       let email = currentCustomer.email;
-      console.log("current customer email: ", email);
       fetchData(email);
     }
   }, [currentCustomer]);
@@ -22,12 +21,10 @@ const HiredBuses = () => {
     let res = await axios.get(
       `${process.env.REACT_APP_BACKEND_URL}/v1/api/bookingHire/${email}`
     );
-    console.log("all bookings hire of this customer: ", res.data);
     setAllBookingsHire(res.data);
   }
 
   const renderHiredBookings = () => {
-    console.log("All Hired bookings: ", allBookingsHire);
     if (allBookingsHire.length === 0) {
       return <h1>No Hired Bus Bookings Found!</h1>;
     }
