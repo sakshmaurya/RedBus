@@ -33,11 +33,9 @@ const getBusData2 = () => (dispatch) => {
   axios
     .get(`${process.env.REACT_APP_BACKEND_URL}/v1/api/busservice/`)
     .then((res) => {
-      console.log("rsponse from db", res);
       dispatch(getBusMongoSuccess(res.data.data));
     })
     .catch((err) => {
-      console.log("error in bus data", err);
       dispatch(getBusMongoFailure());
     });
 };
@@ -46,7 +44,6 @@ const getBusOnIdThunk = (id) => (dispatch) => {
   axios
     .get(`${process.env.REACT_APP_BACKEND_URL}/v1/api/busservice/${id}`)
     .then((res) => {
-      console.log("response for id");
       dispatch(getBusOnId(res.data));
     })
     .catch((err) => dispatch(getBusMongoFailure()));
