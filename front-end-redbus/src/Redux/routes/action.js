@@ -17,7 +17,6 @@ const getRoutesFailure = () => {
   };
 };
 const getRoutes = () => {
-  console.log("heloooo");
   return async (dispatch) => {
     dispatch(getRoutesRequest());
     try {
