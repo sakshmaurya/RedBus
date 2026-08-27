@@ -1,11 +1,16 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Routes as RouterRoutes, Route } from "react-router-dom";
 
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
-
+import Community from "../Pages/Community/Community";
+import Forum from "../Pages/Forum/Forum";
+import ForumTopic from "../Pages/Forum/ForumTopic";
+import Notifications from "../Pages/Notifications/Notifications";
+import NotificationPreferences from "../Pages/Notifications/NotificationPreferences";
 import AdminLogin from "../Pages/Admin/AdminLogin";
 import AdminDashboard from "../Pages/Admin/AdminDashboard";
+import RoutePlanner from "../Pages/RoutePlanner/RoutePlanner";
 
 import SelectBus from "../Components/SelectBus/SelectBus";
 import Error from "../Components/Error/Error";
@@ -21,69 +26,50 @@ import BusServicePaymentPage from "../Components/BusServiceSection/BusServicePay
 
 const Routes = () => {
   return (
-    <Switch>
+    <RouterRoutes>
 
-      <Route path="/" exact>
-        <LandingPage />
-      </Route>
+      <Route path="/" element={<LandingPage />} />
 
-      <Route path="/login" exact>
-        <Login />
-      </Route>
+      <Route path="/login" element={<Login />} />
 
-      <Route path="/register" exact>
-        <Register />
-      </Route>
+      <Route path="/register" element={<Register />} />
 
+      <Route path="/community" element={<Community />} />
+
+      <Route path="/forum" element={<Forum />} />
+
+      <Route path="/forum/topic/:topicId" element={<ForumTopic />} />
+
+      <Route path="/notifications" element={<Notifications />} />
+
+      <Route path="/notifications/preferences" element={<NotificationPreferences />} />
 
       {/* Admin Routes */}
-      <Route path="/admin-login" exact>
-        <AdminLogin />
-      </Route>
+      <Route path="/admin-login" element={<AdminLogin />} />
 
-      <Route path="/admin-dashboard" exact>
-        <AdminDashboard />
-      </Route>
+      <Route path="/admin-dashboard" element={<AdminDashboard />} />
 
+      <Route path="/route-planner" element={<RoutePlanner />} />
 
-      <Route path="/select-bus" exact>
-        <SelectBus />
-      </Route>
+      <Route path="/select-bus" element={<SelectBus />} />
 
-      <Route path="/my-profile" exact>
-        <Profile />
-      </Route>
+      <Route path="/my-profile" element={<Profile />} />
 
-      <Route path="/payment-page" exact>
-        <Payment />
-      </Route>
+      <Route path="/payment-page" element={<Payment />} />
 
-      <Route path="/booking-form" exact>
-        <BusBookingForm />
-      </Route>
+      <Route path="/booking-form" element={<BusBookingForm />} />
 
-      <Route path="/bus-hire" exact>
-        <BusHire />
-      </Route>
+      <Route path="/bus-hire" element={<BusHire />} />
 
-      <Route path="/bus-hire-card" exact>
-        <BusServiceCardPage />
-      </Route>
+      <Route path="/bus-hire-card" element={<BusServiceCardPage />} />
 
-      <Route path="/bus-hire-details/:id" exact>
-        <BusServiceDetailsPage />
-      </Route>
+      <Route path="/bus-hire-details/:id" element={<BusServiceDetailsPage />} />
 
-      <Route path="/payments-hire" exact>
-        <BusServicePaymentPage />
-      </Route>
+      <Route path="/payments-hire" element={<BusServicePaymentPage />} />
 
+      <Route path="*" element={<Error />} />
 
-      <Route>
-        <Error />
-      </Route>
-
-    </Switch>
+    </RouterRoutes>
   );
 };
 
