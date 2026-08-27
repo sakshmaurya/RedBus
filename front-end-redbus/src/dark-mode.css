@@ -1,0 +1,914 @@
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  body.dark-mode .Navbar {
+    padding: 10px;
+  }
+  
+  body.dark-mode .Navbar__listOne {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  body.dark-mode .Navbar__listTwo {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  body.dark-mode .LandingPage__form {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  body.dark-mode .LandingPage__form__button button {
+    width: 100%;
+  }
+}
+
+/* Navbar Dark Mode */
+body.dark-mode .Navbar {
+  background-color: #1a1a1a !important;
+  border-bottom: 1px solid #404040;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .Navbar__listOne {
+  background-color: #1a1a1a !important;
+}
+
+body.dark-mode .Navbar__listTwo {
+  background-color: #1a1a1a !important;
+}
+
+/* Link component specific overrides - most specific selectors */
+body.dark-mode .Navbar__listOne > li > a {
+  color: #ffffff !important;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .Navbar__listOne > li > a:hover {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listOne > li > a:link,
+body.dark-mode .Navbar__listOne > li > a:visited,
+body.dark-mode .Navbar__listOne > li > a:active,
+body.dark-mode .Navbar__listOne > li > a:focus {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listTwo li {
+  color: #ffffff !important;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .Navbar__listTwo li:hover {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listTwo > li > a {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listTwo > li > a:hover {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listOne > li {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listOne > li:hover {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listTwo > li {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listTwo > li:hover {
+  color: #ffffff !important;
+}
+
+body.dark-mode .icons {
+  color: #ffffff !important;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+body.dark-mode .icons:hover {
+  color: #ffffff !important;
+}
+
+/* Material UI Menu in Dark Mode */
+body.dark-mode .MuiPaper-root {
+  background-color: #2d2d2d !important;
+  border: 1px solid #404040;
+}
+
+body.dark-mode .MuiMenuItem-root {
+  color: #ffffff !important;
+}
+
+body.dark-mode .MuiMenuItem-root:hover {
+  background-color: #3d3d3d !important;
+  color: #ffffff !important;
+}
+
+/* Navbar specific elements */
+body.dark-mode .leftSide_header {
+  background-color: #1a1a1a !important;
+}
+
+body.dark-mode .rightSide_header {
+  background-color: #1a1a1a !important;
+}
+
+body.dark-mode .Navbar a {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar a:hover {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar span {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar li {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar p {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar h1,
+body.dark-mode .Navbar h2,
+body.dark-mode .Navbar h3,
+body.dark-mode .Navbar h4,
+body.dark-mode .Navbar h5,
+body.dark-mode .Navbar h6 {
+  color: #ffffff !important;
+}
+
+/* Override any red color in navbar hover states */
+body.dark-mode .Navbar li:hover {
+  color: #ffffff !important;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+body.dark-mode .Navbar a:hover {
+  color: #ffffff !important;
+}
+
+/* Additional override for any inline styles */
+body.dark-mode .Navbar [style*="color:"] {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar [style*="color: red"] {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar [style*="color:#d84e55"] {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar [style*="color: #d84e55"] {
+  color: #ffffff !important;
+}
+
+/* React Router Link specific - most specific */
+body.dark-mode .Navbar__listOne > li > a[class*="Link"] {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listOne > li > a[class*="Link"]:hover {
+  color: #ffffff !important;
+}
+
+/* Dark mode link class */
+body.dark-mode .dark-mode-link {
+  color: #ffffff !important;
+}
+
+body.dark-mode .dark-mode-link:hover {
+  color: #ffffff !important;
+}
+
+/* Force all navbar links to white in dark mode */
+body.dark-mode .Navbar__listOne a,
+body.dark-mode .Navbar__listOne a:link,
+body.dark-mode .Navbar__listOne a:visited,
+body.dark-mode .Navbar__listOne a:active,
+body.dark-mode .Navbar__listOne a:hover {
+  color: #ffffff !important;
+}
+
+/* Override inline styles for navbar links in dark mode */
+body.dark-mode .Navbar__listOne a[style*="color"] {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listOne a[style*="color"]:hover {
+  color: #ffffff !important;
+}
+
+/* Most specific override for navbar links */
+body.dark-mode .Navbar__listOne > li > a,
+body.dark-mode .Navbar__listOne > li > a:hover,
+body.dark-mode .Navbar__listOne > li > a:link,
+body.dark-mode .Navbar__listOne > li > a:visited,
+body.dark-mode .Navbar__listOne > li > a:active {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listOne > li > a[style] {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listOne > li > a[style]:hover {
+  color: #ffffff !important;
+}
+
+/* Override all possible color states for navbar links in dark mode */
+body.dark-mode .Navbar__listOne a,
+body.dark-mode .Navbar__listOne a:visited,
+body.dark-mode .Navbar__listOne a:link,
+body.dark-mode .Navbar__listOne a:active,
+body.dark-mode .Navbar__listOne a:hover,
+body.dark-mode .Navbar__listOne a:focus {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listOne li a,
+body.dark-mode .Navbar__listOne li a:visited,
+body.dark-mode .Navbar__listOne li a:link,
+body.dark-mode .Navbar__listOne li a:active,
+body.dark-mode .Navbar__listOne li a:hover,
+body.dark-mode .Navbar__listOne li a:focus {
+  color: #ffffff !important;
+}
+
+/* Force white color on all child elements of navbar list items in dark mode */
+body.dark-mode .Navbar__listOne > li,
+body.dark-mode .Navbar__listOne > li > *,
+body.dark-mode .Navbar__listOne > li > *:hover {
+  color: #ffffff !important;
+}
+
+/* Override any computed styles */
+body.dark-mode .Navbar__listOne > li > a {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listOne > li:hover > a {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listOne > li > a:hover {
+  color: #ffffff !important;
+}
+
+/* Remove any red color from hover states */
+body.dark-mode .Navbar__listOne > li:hover,
+body.dark-mode .Navbar__listOne > li:hover > a,
+body.dark-mode .Navbar__listOne > li:hover > a:hover {
+  color: #ffffff !important;
+}
+
+/* Override all link states including visited */
+body.dark-mode .Navbar__listOne a:visited {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listOne a:visited:hover {
+  color: #ffffff !important;
+}
+
+/* Force white color on all text in navbar list one in dark mode */
+body.dark-mode .Navbar__listOne {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar__listOne * {
+  color: #ffffff !important;
+}
+
+/* Specific override for Link component text */
+body.dark-mode .Navbar__listOne > li > a,
+body.dark-mode .Navbar__listOne > li > a:link,
+body.dark-mode .Navbar__listOne > li > a:visited,
+body.dark-mode .Navbar__listOne > li > a:hover,
+body.dark-mode .Navbar__listOne > li > a:active,
+body.dark-mode .Navbar__listOne > li > a:focus {
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+body.dark-mode .Navbar__listOne > li:hover > a,
+body.dark-mode .Navbar__listOne > li:hover > a:link,
+body.dark-mode .Navbar__listOne > li:hover > a:visited,
+body.dark-mode .Navbar__listOne > li:hover > a:hover,
+body.dark-mode .Navbar__listOne > li:hover > a:active,
+body.dark-mode .Navbar__listOne > li:hover > a:focus {
+  color: #ffffff !important;
+  text-decoration: underline;
+}
+
+/* Dark mode nav link class */
+body.dark-mode .dark-mode-nav-link {
+  color: #ffffff !important;
+}
+
+body.dark-mode .dark-mode-nav-link:link,
+body.dark-mode .dark-mode-nav-link:visited,
+body.dark-mode .dark-mode-nav-link:active,
+body.dark-mode .dark-mode-nav-link:focus {
+  color: #ffffff !important;
+}
+
+body.dark-mode .dark-mode-nav-link:hover {
+  color: #ffffff !important;
+}
+
+/* Cards and Containers */
+body.dark-mode .card,
+body.dark-mode .bus-card,
+body.dark-mode .post-card {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+}
+
+/* Inputs */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background-color: #2d2d2d;
+  color: #ffffff;
+  border: 1px solid #404040;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color: #888;
+}
+
+body.dark-mode input:focus,
+body.dark-mode textarea:focus,
+body.dark-mode select:focus {
+  border-color: #d84e55;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(216, 78, 85, 0.1);
+}
+
+/* Buttons */
+body.dark-mode button {
+  background-color: #d84e55;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+body.dark-mode button:hover {
+  background-color: #c43d44;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(216, 78, 85, 0.3);
+}
+
+body.dark-mode button:active {
+  transform: translateY(0);
+}
+
+body.dark-mode button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Links */
+body.dark-mode a {
+  color: #d84e55;
+}
+
+body.dark-mode a:hover {
+  color: #ff6b6b;
+}
+
+/* Tables */
+body.dark-mode table {
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+
+body.dark-mode th,
+body.dark-mode td {
+  border-color: #404040;
+}
+
+body.dark-mode th {
+  background-color: #3d3d3d;
+}
+
+/* Modals */
+body.dark-mode .modal,
+body.dark-mode .MuiModal-root .MuiPaper-root {
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+
+/* Menus */
+body.dark-mode .MuiMenu-paper,
+body.dark-mode .MuiPopover-paper {
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+
+body.dark-mode .MuiMenuItem-root {
+  color: #e0e0e0;
+}
+
+body.dark-mode .MuiMenuItem-root:hover {
+  background-color: #3d3d3d;
+}
+
+/* Landing Page */
+body.dark-mode .LandingPage__mainBanner {
+  background-color: #1a1a1a;
+}
+
+body.dark-mode .LandingPage__form input {
+  background-color: #2d2d2d;
+  color: #ffffff;
+  border: 1px solid #404040;
+  padding: 12px 16px;
+  border-radius: 8px;
+}
+
+body.dark-mode .LandingPage__form__departure__dropdown,
+body.dark-mode .LandingPage__form__arrival__dropdown {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .LandingPage__form__departure__dropdown li,
+body.dark-mode .LandingPage__form__arrival__dropdown li {
+  color: #e0e0e0;
+  padding: 10px 16px;
+  transition: background-color 0.2s ease;
+}
+
+body.dark-mode .LandingPage__form__departure__dropdown li:hover,
+body.dark-mode .LandingPage__form__arrival__dropdown li:hover {
+  background-color: #3d3d3d;
+  color: #ffffff;
+}
+
+body.dark-mode .LandingPage__form__button button {
+  background-color: #d84e55;
+  color: #ffffff;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Login/Register Pages */
+body.dark-mode .login-container,
+body.dark-mode .register-container {
+  background-color: #1a1a1a;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.dark-mode .login-box,
+body.dark-mode .register-box {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  max-width: 400px;
+  width: 100%;
+}
+
+body.dark-mode .login-box h2,
+body.dark-mode .register-box h2 {
+  color: #ffffff;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+body.dark-mode .login-box input,
+body.dark-mode .register-box input,
+body.dark-mode .register-box select {
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  border-radius: 8px;
+}
+
+body.dark-mode .login-box button,
+body.dark-mode .register-box button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 16px;
+}
+
+/* Community Page */
+body.dark-mode .community {
+  background-color: #1a1a1a;
+  padding: 20px;
+}
+
+body.dark-mode .createPost {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .community h1 {
+  color: #ffffff;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+body.dark-mode .post-card {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode .post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .post-card h3,
+body.dark-mode .post-card h4 {
+  color: #ffffff;
+}
+
+body.dark-mode .post-card p {
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+/* Profile Page */
+body.dark-mode .ProfilePannel {
+  background-color: #1a1a1a;
+  min-height: 100vh;
+}
+
+body.dark-mode .leftPart {
+  background-color: #2d2d2d;
+  border-right: 1px solid #404040;
+  padding: 24px;
+}
+
+body.dark-mode .leftPannel_eachListItem_text {
+  color: #e0e0e0;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .leftPannel_eachListOption {
+  padding: 12px 16px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+body.dark-mode .leftPannel_eachListOption:hover {
+  background-color: #3d3d3d;
+}
+
+body.dark-mode .leftPannel_eachListOption:hover .leftPannel_eachListItem_text {
+  color: #ffffff;
+}
+
+body.dark-mode .profileName {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+body.dark-mode .walletVerified {
+  color: #4CAF50;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Route Planner */
+body.dark-mode .route-planner-container {
+  background-color: #1a1a1a;
+}
+
+body.dark-mode .route-planner-form {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+}
+
+body.dark-mode .route-result {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+}
+
+body.dark-mode .saved-routes-container {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+}
+
+/* Admin Dashboard */
+body.dark-mode .admin-dashboard {
+  background-color: #1a1a1a;
+}
+
+body.dark-mode .admin-sidebar {
+  background-color: #2d2d2d;
+  border-right: 1px solid #404040;
+}
+
+body.dark-mode .admin-content {
+  background-color: #1a1a1a;
+}
+
+body.dark-mode .admin-card {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+}
+
+/* Scrollbar */
+body.dark-mode ::-webkit-scrollbar {
+  width: 10px;
+}
+
+body.dark-mode ::-webkit-scrollbar-track {
+  background: #2d2d2d;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 5px;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* Form Elements */
+body.dark-mode .form-control {
+  background-color: #2d2d2d;
+  color: #ffffff;
+  border: 1px solid #404040;
+}
+
+body.dark-mode .form-control:focus {
+  background-color: #3d3d3d;
+  border-color: #d84e55;
+}
+
+/* Status Messages */
+body.dark-mode .error-message {
+  background-color: #3d2d2d;
+  color: #ff6b6b;
+  border: 1px solid #5c3d3d;
+}
+
+body.dark-mode .success-message {
+  background-color: #2d3d2d;
+  color: #4CAF50;
+  border: 1px solid #3d5c3d;
+}
+
+body.dark-mode .warning-message {
+  background-color: #3d3d2d;
+  color: #ff9800;
+  border: 1px solid #5c5c3d;
+}
+
+/* Loading States */
+body.dark-mode .loading-spinner {
+  border-color: #404040;
+  border-top-color: #d84e55;
+}
+
+/* Footer */
+body.dark-mode footer {
+  background-color: #2d2d2d;
+  border-top: 1px solid #404040;
+  color: #e0e0e0;
+}
+
+body.dark-mode footer a {
+  color: #d84e55;
+}
+
+/* Helper Classes */
+body.dark-mode .text-muted {
+  color: #888 !important;
+}
+
+body.dark-mode .bg-light {
+  background-color: #2d2d2d !important;
+}
+
+body.dark-mode .border {
+  border-color: #404040 !important;
+}
+
+/* Inputs */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+  color: #ffffff;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color: #888888;
+}
+
+/* Buttons */
+body.dark-mode button {
+  background-color: #d84e55;
+  color: #ffffff;
+}
+
+body.dark-mode button:hover {
+  background-color: #c4444b;
+}
+
+body.dark-mode button.secondary {
+  background-color: #404040;
+  color: #ffffff;
+}
+
+/* Tables */
+body.dark-mode table {
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+
+body.dark-mode th,
+body.dark-mode td {
+  border-color: #404040;
+}
+
+body.dark-mode th {
+  background-color: #3d3d3d;
+}
+
+/* Modals */
+body.dark-mode .modal {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+}
+
+/* Menus */
+body.dark-mode .MuiMenu-paper {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+}
+
+body.dark-mode .MuiMenuItem-root {
+  color: #e0e0e0;
+}
+
+body.dark-mode .MuiMenuItem-root:hover {
+  background-color: #404040;
+}
+
+/* Links */
+body.dark-mode a {
+  color: #d84e55;
+}
+
+body.dark-mode a:hover {
+  color: #ff6b6b;
+}
+
+/* Scrollbar */
+body.dark-mode::-webkit-scrollbar {
+  width: 10px;
+}
+
+body.dark-mode::-webkit-scrollbar-track {
+  background: #2d2d2d;
+}
+
+body.dark-mode::-webkit-scrollbar-thumb {
+  background: #404040;
+  border-radius: 5px;
+}
+
+body.dark-mode::-webkit-scrollbar-thumb:hover {
+  background: #505050;
+}
+
+/* Form Elements */
+body.dark-mode label {
+  color: #e0e0e0;
+}
+
+body.dark-mode .form-group {
+  color: #e0e0e0;
+}
+
+/* Status Messages */
+body.dark-mode .success {
+  background-color: #2d5a2d;
+  color: #ffffff;
+}
+
+body.dark-mode .error {
+  background-color: #5a2d2d;
+  color: #ffffff;
+}
+
+body.dark-mode .warning {
+  background-color: #5a5a2d;
+  color: #ffffff;
+}
+
+/* Loading States */
+body.dark-mode .loading {
+  color: #e0e0e0;
+}
+
+/* Admin Dashboard */
+body.dark-mode .management {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+}
+
+body.dark-mode .management h2 {
+  color: #ffffff;
+}
+
+/* Community */
+body.dark-mode .community-post {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+}
+
+body.dark-mode .community-post h3 {
+  color: #ffffff;
+}
+
+body.dark-mode .community-post p {
+  color: #e0e0e0;
+}
+
+/* Profile */
+body.dark-mode .profile-section {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+}
+
+/* Route Planner */
+body.dark-mode .route-planner {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+}
+
+body.dark-mode .route-card {
+  background-color: #3d3d3d;
+  border: 1px solid #505050;
+}
+
+/* Map Container */
+body.dark-mode .map-container {
+  border: 1px solid #404040;
+}
+
+/* Footer */
+body.dark-mode footer {
+  background-color: #2d2d2d;
+  border-top: 1px solid #404040;
+  color: #e0e0e0;
+}
