@@ -4,3 +4,89 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* Disable browser default visited link styling */
+a:visited {
+  color: inherit;
+}
+
+/* Force all links to inherit color in dark mode */
+body.dark-mode a:visited {
+  color: inherit !important;
+}
+
+/* Dark mode navbar link overrides - HIGHEST SPECIFICITY */
+body.dark-mode .Navbar__listOne a,
+body.dark-mode .Navbar__listOne a:link,
+body.dark-mode .Navbar__listOne a:visited,
+body.dark-mode .Navbar__listOne a:active,
+body.dark-mode .Navbar__listOne a:hover,
+body.dark-mode .Navbar__listOne a:focus,
+body.dark-mode .Navbar__listOne a:any-link {
+  color: #ffffff !important;
+}
+
+body.dark-mode .dark-mode-nav-link,
+body.dark-mode .dark-mode-nav-link:link,
+body.dark-mode .dark-mode-nav-link:visited,
+body.dark-mode .dark-mode-nav-link:active,
+body.dark-mode .dark-mode-nav-link:hover,
+body.dark-mode .dark-mode-nav-link:focus,
+body.dark-mode .dark-mode-nav-link:any-link {
+  color: #ffffff !important;
+}
+
+/* Force white on all navbar links in dark mode */
+body.dark-mode .Navbar__listOne > li > a,
+body.dark-mode .Navbar__listOne > li > a:link,
+body.dark-mode .Navbar__listOne > li > a:visited,
+body.dark-mode .Navbar__listOne > li > a:active,
+body.dark-mode .Navbar__listOne > li > a:hover,
+body.dark-mode .Navbar__listOne > li > a:focus,
+body.dark-mode .Navbar__listOne > li > a:any-link {
+  color: #ffffff !important;
+}
+
+/* Override any computed styles for visited links */
+body.dark-mode .Navbar__listOne a:visited,
+body.dark-mode .Navbar__listOne a:visited:hover,
+body.dark-mode .Navbar__listOne a:visited:active {
+  color: #ffffff !important;
+}
+
+/* Most specific selector for navbar links in dark mode */
+body.dark-mode .Navbar.Navbar .Navbar__listOne > li > a,
+body.dark-mode .Navbar.Navbar .Navbar__listOne > li > a:link,
+body.dark-mode .Navbar.Navbar .Navbar__listOne > li > a:visited,
+body.dark-mode .Navbar.Navbar .Navbar__listOne > li > a:active,
+body.dark-mode .Navbar.Navbar .Navbar__listOne > li > a:hover,
+body.dark-mode .Navbar.Navbar .Navbar__listOne > li > a:focus {
+  color: #ffffff !important;
+}
+
+/* Override browser default visited link color */
+body.dark-mode a:visited,
+body.dark-mode a:visited:hover,
+body.dark-mode a:visited:active {
+  color: #ffffff !important;
+}
+
+body.dark-mode .Navbar a:visited,
+body.dark-mode .Navbar a:visited:hover,
+body.dark-mode .Navbar a:visited:active {
+  color: #ffffff !important;
+}
+
+/* Force all text in navbar to white in dark mode */
+body.dark-mode .Navbar__listOne,
+body.dark-mode .Navbar__listOne *,
+body.dark-mode .Navbar__listOne *:hover {
+  color: #ffffff !important;
+}
+
+/* Override any inline styles that might be setting red color */
+body.dark-mode .Navbar__listOne a[style*="color"],
+body.dark-mode .Navbar__listOne a[style*="color"]:hover,
+body.dark-mode .Navbar__listOne a[style*="color"]:visited {
+  color: #ffffff !important;
+}
