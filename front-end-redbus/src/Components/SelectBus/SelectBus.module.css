@@ -1,5 +1,37 @@
 .SelectBus_mainContent {
-  /* border: 1px solid blue; */
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 300px 1fr;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .SelectBus_mainContent {
+    grid-template-columns: 250px 1fr;
+    gap: 15px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .SelectBus_mainContent {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .SelectBus_mainContent {
+    padding: 8px;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 320px) {
+  .SelectBus_mainContent {
+    padding: 5px;
+  }
 }

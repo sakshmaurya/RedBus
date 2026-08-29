@@ -141,7 +141,6 @@ const Right = () => {
   );
 
   if (sortingProperty !== "None") {
-    console.log(sortingProperty);
     if (sortingProperty === "departure") {
       filteredMatchedBuses.sort(
         (a, b) => Number(a.departureTime) - Number(b.departureTime)
