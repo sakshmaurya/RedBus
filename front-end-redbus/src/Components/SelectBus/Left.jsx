@@ -2,20 +2,20 @@ import React from "react";
 import styles from "./Left.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { updateFilterDetails } from "../../Redux/FilterAndSort/action";
-import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
-import GpsFixedIcon from "@material-ui/icons/GpsFixed";
-import RestoreIcon from "@material-ui/icons/Restore";
-import WifiIcon from "@material-ui/icons/Wifi";
-import LocalDrinkIcon from "@material-ui/icons/LocalDrink";
-import InsertDriveFileIcon from "@material-ui/icons/InsertDriveFile";
-import SettingsInputHdmiIcon from "@material-ui/icons/SettingsInputHdmi";
-import LocalMoviesIcon from "@material-ui/icons/LocalMovies";
-import AccessAlarmIcon from "@material-ui/icons/AccessAlarm";
-import AirlineSeatLegroomExtraIcon from "@material-ui/icons/AirlineSeatLegroomExtra";
-import DirectionsBusIcon from "@material-ui/icons/DirectionsBus";
-import WeekendIcon from "@material-ui/icons/Weekend";
-import AirlineSeatIndividualSuite from "@material-ui/icons/AirlineSeatIndividualSuite";
-import AvTimerIcon from "@material-ui/icons/AvTimer";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import GpsFixedIcon from "@mui/icons-material/GpsFixed";
+import RestoreIcon from "@mui/icons-material/Restore";
+import WifiIcon from "@mui/icons-material/Wifi";
+import LocalDrinkIcon from "@mui/icons-material/LocalDrink";
+import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
+import SettingsInputHdmiIcon from "@mui/icons-material/SettingsInputHdmi";
+import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
+import AccessAlarmIcon from "@mui/icons-material/AccessAlarm";
+import AirlineSeatLegroomExtraIcon from "@mui/icons-material/AirlineSeatLegroomExtra";
+import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
+import WeekendIcon from "@mui/icons-material/Weekend";
+import AirlineSeatIndividualSuite from "@mui/icons-material/AirlineSeatIndividualSuite";
+import AvTimerIcon from "@mui/icons-material/AvTimer";
 
 const initState = {
   liveTracking: false,
@@ -137,7 +137,6 @@ const Left = () => {
       key: "arrivalTime",
       value: { ...filterArrivalTime, [name]: e.target.checked },
     };
-    console.log(payload);
     dispatch(updateFilterDetails(payload));
   };
 
