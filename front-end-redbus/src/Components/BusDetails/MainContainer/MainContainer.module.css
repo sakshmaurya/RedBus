@@ -1,17 +1,53 @@
 .mainScreen {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
 }
 
 .leftSide {
-  width: 20%;
-  height: 100%;
+  width: 100%;
+  height: auto;
 }
 
 .rightSide {
-  width: 80%;
-  height: 100%;
+  width: 100%;
+  height: auto;
   border: 1px solid black;
   box-sizing: border-box;
+}
+
+/* Desktop layout */
+@media (min-width: 1024px) {
+  .mainScreen {
+    flex-direction: row;
+    height: 100vh;
+  }
+  
+  .leftSide {
+    width: 20%;
+    height: 100%;
+  }
+  
+  .rightSide {
+    width: 80%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainScreen {
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .rightSide {
+    border: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainScreen {
+    padding: 5px;
+  }
 }
