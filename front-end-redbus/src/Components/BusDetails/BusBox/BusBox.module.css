@@ -7,22 +7,62 @@
   height: auto;
   border: 1px solid #ddd;
   margin-top: 20px;
-  padding: 10px 0 0;
+  padding: 10px;
   color: #4a4a4a;
   font-family: Montserrat;
   font-size: 14px;
   font-weight: 400;
-  padding: 10px;
+  background-color: white;
+  transition: box-shadow 0.3s ease;
 }
 
 .busBox:hover {
-  box-shadow: 0 16px 30px 1px rgb(0 0 0 / 10%);
-  transition: 1s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
 }
 
 .busBox > * {
   width: 100%;
-  /* border: 1px solid red; */
+}
+
+/* Dark mode */
+body.dark-mode .busBox {
+  background-color: #2d2d2d;
+  border-color: #404040;
+  color: #ffffff;
+}
+
+body.dark-mode .busBoxSection11 > div:nth-child(1),
+body.dark-mode .busBoxSection12 > div:nth-child(1),
+body.dark-mode .busBoxSection14 > div:nth-child(1) {
+  color: #ffffff;
+}
+
+body.dark-mode .busBoxSection11 > div:nth-child(2),
+body.dark-mode .busBoxSection12 > div:nth-child(2),
+body.dark-mode .busBoxSection14 > div:nth-child(2),
+body.dark-mode .busBoxSection16 > div:nth-child(1),
+body.dark-mode .busBoxSection16 > div:nth-child(2) {
+  color: #b0b0b0;
+}
+
+body.dark-mode .busBoxSection13 > div {
+  color: #b0b0b0;
+}
+
+body.dark-mode .busBoxSection22 > div {
+  background-color: #3d3d3d;
+  color: #b0b0b0;
+}
+
+body.dark-mode .busBoxSection17 > div:nth-child(2),
+body.dark-mode .busBoxSection17 > div:nth-child(3) {
+  color: #b0b0b0;
+}
+
+body.dark-mode .busBoxSection17 > div:nth-child(2) > div:nth-child(1),
+body.dark-mode .busBoxSection17 > div:nth-child(3) > div:nth-child(1) {
+  color: #ffffff;
 }
 
 /* bus section 1 */
@@ -31,6 +71,8 @@
   margin-bottom: 1%;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .busBoxSection1 * {
@@ -39,10 +81,12 @@
 
 .busBoxSection1 > div {
   height: 100%;
+  flex-shrink: 0;
 }
 
 .busBoxSection11 {
   width: 25%;
+  min-width: 120px;
 }
 
 .busBoxSection11 > div:nth-child(1) {
@@ -60,6 +104,7 @@
 
 .busBoxSection12 {
   width: 10%;
+  min-width: 60px;
 }
 
 .busBoxSection12 > div:nth-child(1) {
@@ -77,6 +122,7 @@
 
 .busBoxSection13 {
   width: 10%;
+  min-width: 60px;
 }
 
 .busBoxSection13 > div {
@@ -86,6 +132,7 @@
 
 .busBoxSection14 {
   width: 14%;
+  min-width: 80px;
 }
 
 .busBoxSection14 > div:nth-child(1) {
@@ -103,6 +150,7 @@
 
 .busBoxSection15 {
   width: 10%;
+  min-width: 60px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -144,6 +192,7 @@
 
 .busBoxSection16 {
   width: 15%;
+  min-width: 90px;
 }
 
 .busBoxSection16 > div:nth-child(1) {
@@ -181,6 +230,7 @@
 
 .busBoxSection17 {
   width: 15%;
+  min-width: 90px;
 }
 
 .busBoxSection17 > div:nth-child(1) {
@@ -210,16 +260,20 @@
   height: 16%;
   margin-bottom: 1%;
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .busBoxSection21 {
   width: 160px;
   height: 100%;
+  flex-shrink: 0;
 }
 
 .busBoxSection22 {
   width: auto;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .busBoxSection22 > div {
@@ -227,6 +281,7 @@
   align-items: center;
   justify-content: flex-start;
   margin-right: 10px;
+  margin-bottom: 5px;
   border-radius: 3px;
   background-color: #f8f4f4;
   padding: 2.5px 8px;
@@ -238,4 +293,100 @@
 .busBoxSection3 {
   min-height: 25%;
   height: auto;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .busBoxSection1 {
+    flex-wrap: wrap;
+  }
+  
+  .busBoxSection11,
+  .busBoxSection12,
+  .busBoxSection13,
+  .busBoxSection14,
+  .busBoxSection15,
+  .busBoxSection16,
+  .busBoxSection17 {
+    width: 45%;
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .busBox {
+    padding: 8px;
+    margin-top: 15px;
+  }
+  
+  .busBoxSection1 {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .busBoxSection1 > div {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .busBoxSection2 {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .busBoxSection21 {
+    width: 100%;
+  }
+  
+  .busBoxSection22 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .busBox {
+    padding: 6px;
+    font-size: 12px;
+  }
+  
+  .busBoxSection11 > div:nth-child(1),
+  .busBoxSection12 > div:nth-child(1),
+  .busBoxSection14 > div:nth-child(1) {
+    font-size: 12px;
+  }
+  
+  .busBoxSection11 > div:nth-child(2),
+  .busBoxSection12 > div:nth-child(2),
+  .busBoxSection14 > div:nth-child(2) {
+    font-size: 11px;
+  }
+  
+  .busBoxSection16 > div:nth-child(1) {
+    font-size: 13px;
+  }
+  
+  .busBoxSection16 > div:nth-child(2) {
+    font-size: 11px;
+  }
+  
+  .busBoxSection22 > div {
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+}
+
+@media (max-width: 320px) {
+  .busBox {
+    font-size: 11px;
+  }
+  
+  .busBoxSection15 > div {
+    width: 40px;
+    height: 22px;
+  }
+  
+  .busBoxSection15 > :nth-child(1) > :nth-child(1),
+  .busBoxSection15 > :nth-child(2) > :nth-child(1) {
+    font-size: 15px;
+  }
 }

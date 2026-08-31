@@ -1,18 +1,19 @@
 import React from "react";
 import styles from "./BusBox.module.css";
-import StarsIcon from "@material-ui/icons/Stars";
-import LocalOfferIcon from "@material-ui/icons/LocalOffer";
-import PeopleIcon from "@material-ui/icons/People";
-import PowerIcon from "@material-ui/icons/Power";
-import MovieFilterIcon from "@material-ui/icons/MovieFilter";
-import WbIncandescentIcon from "@material-ui/icons/WbIncandescent";
-import Tooltip from "@material-ui/core/Tooltip";
-import DirectionsBusIcon from "@material-ui/icons/DirectionsBus";
-import GpsFixedIcon from "@material-ui/icons/GpsFixed";
-import RestoreIcon from "@material-ui/icons/Restore";
+import StarsIcon from "@mui/icons-material/Stars";
+import LocalOfferIcon from "@mui/icons-material/LocalOffer";
+import PeopleIcon from "@mui/icons-material/People";
+import PowerIcon from "@mui/icons-material/Power";
+import MovieFilterIcon from "@mui/icons-material/MovieFilter";
+import WbIncandescentIcon from "@mui/icons-material/WbIncandescent";
+import Tooltip from "@mui/material/Tooltip";
+import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
+import GpsFixedIcon from "@mui/icons-material/GpsFixed";
+import RestoreIcon from "@mui/icons-material/Restore";
 import { BottomTabs } from "../BottomTabs/BottomTabs";
 import { useDispatch } from "react-redux";
 import { updateBookingDetails } from "../../../Redux/BookBus/action";
+import ReviewsSection from "../ReviewsSection/ReviewsSection";
 
 const BusBox = ({
   _id,
@@ -65,137 +66,144 @@ const BusBox = ({
   var busArrivalTime =
     (Number(departureTime) + Number(routeDetails["duration"])) % 24;
   return (
-    <div className={styles.busBox}>
-      <div className={styles.busBoxSection1}>
-        <div className={styles.busBoxSection11}>
-          <div>{operatorName}</div>
-          <div>{busTypeName}</div>
-        </div>
-        <div className={styles.busBoxSection12}>
-          <div>{busDepartureTime}:00</div>
-          <div>{routeDetails["departureLocation"]["name"]}</div>
-        </div>
-        <div className={styles.busBoxSection13}>
-          <div>{routeDetails["duration"]}&nbsp;h</div>
-        </div>
-        <div className={styles.busBoxSection14}>
-          <div>{busArrivalTime}:00</div>
-          <div>{routeDetails["arrivalLocation"]["name"]}</div>
-        </div>
-        <div className={styles.busBoxSection15}>
-          <div>
-            <StarsIcon />
-            <div>{avgRating}</div>
+    <>
+      <div className={styles.busBox}>
+        <div className={styles.busBoxSection1}>
+          <div className={styles.busBoxSection11}>
+            <div>{operatorName}</div>
+            <div>{busTypeName}</div>
           </div>
-          <div>
-            <PeopleIcon />
-            <div>{totalReviews}</div>
+          <div className={styles.busBoxSection12}>
+            <div>{busDepartureTime}:00</div>
+            <div>{routeDetails["departureLocation"]["name"]}</div>
           </div>
-        </div>
-        <div className={styles.busBoxSection16}>
-          <div>
-            <div>INR</div>
-            <div>{seatPrice}</div>
+          <div className={styles.busBoxSection13}>
+            <div>{routeDetails["duration"]}&nbsp;h</div>
           </div>
-          <div>
-            <LocalOfferIcon />
-            <div>redDeal applied</div>
+          <div className={styles.busBoxSection14}>
+            <div>{busArrivalTime}:00</div>
+            <div>{routeDetails["arrivalLocation"]["name"]}</div>
           </div>
-        </div>
-        <div className={styles.busBoxSection17}>
-          <div></div>
-          <div>
-            <div>{40 - filledSeats.length}</div>
-            <div>Seats Available</div>
-          </div>
-          <div>
-            <div>20</div>
-            <div>Window</div>
-          </div>
-        </div>
-      </div>
-      <div className={styles.busBoxSection2}>
-        <div className={styles.busBoxSection21}>
-          <Tooltip title="Charging Point" arrow>
-            <PowerIcon
-              style={{
-                fontWeight: "50",
-                fontSize: "20px",
-                marginRight: "9px",
-                color: "grey",
-              }}
-            />
-          </Tooltip>
-          <Tooltip title="Movie" arrow>
-            <MovieFilterIcon
-              style={{
-                fontWeight: "50",
-                fontSize: "20px",
-                marginRight: "9px",
-                color: "grey",
-              }}
-            />
-          </Tooltip>
-          <Tooltip title="Reading Light" arrow>
-            <WbIncandescentIcon
-              style={{
-                fontWeight: "50",
-                fontSize: "20px",
-                marginRight: "9px",
-                color: "grey",
-              }}
-            />
-          </Tooltip>
-          <Tooltip title="Track My Bus" arrow>
-            <DirectionsBusIcon
-              style={{
-                fontWeight: "50",
-                fontSize: "20px",
-                marginRight: "9px",
-                color: "grey",
-              }}
-            />
-          </Tooltip>
-        </div>
-        <div className={styles.busBoxSection22}>
-          {liveTracking === 1 && (
+          <div className={styles.busBoxSection15}>
             <div>
-              <GpsFixedIcon
+              <StarsIcon />
+              <div>{avgRating}</div>
+            </div>
+            <div>
+              <PeopleIcon />
+              <div>{totalReviews}</div>
+            </div>
+          </div>
+          <div className={styles.busBoxSection16}>
+            <div>
+              <div>INR</div>
+              <div>{seatPrice}</div>
+            </div>
+            <div>
+              <LocalOfferIcon />
+              <div>redDeal applied</div>
+            </div>
+          </div>
+          <div className={styles.busBoxSection17}>
+            <div></div>
+            <div>
+              <div>{40 - filledSeats.length}</div>
+              <div>Seats Available</div>
+            </div>
+            <div>
+              <div>20</div>
+              <div>Window</div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.busBoxSection2}>
+          <div className={styles.busBoxSection21}>
+            <Tooltip title="Charging Point" arrow>
+              <PowerIcon
                 style={{
                   fontWeight: "50",
                   fontSize: "20px",
-                  marginRight: "6px",
+                  marginRight: "9px",
+                  color: "grey",
                 }}
               />
-              <span>Live Tracking</span>
-            </div>
-          )}
-          {reschedulable === 1 && (
-            <div>
-              <RestoreIcon
+            </Tooltip>
+            <Tooltip title="Movie" arrow>
+              <MovieFilterIcon
                 style={{
                   fontWeight: "50",
                   fontSize: "20px",
-                  marginRight: "6px",
+                  marginRight: "9px",
+                  color: "grey",
                 }}
               />
-              <span>Reschedulable</span>
-            </div>
-          )}
+            </Tooltip>
+            <Tooltip title="Reading Light" arrow>
+              <WbIncandescentIcon
+                style={{
+                  fontWeight: "50",
+                  fontSize: "20px",
+                  marginRight: "9px",
+                  color: "grey",
+                }}
+              />
+            </Tooltip>
+            <Tooltip title="Track My Bus" arrow>
+              <DirectionsBusIcon
+                style={{
+                  fontWeight: "50",
+                  fontSize: "20px",
+                  marginRight: "9px",
+                  color: "grey",
+                }}
+              />
+            </Tooltip>
+          </div>
+          <div className={styles.busBoxSection22}>
+            {liveTracking === 1 && (
+              <div>
+                <GpsFixedIcon
+                  style={{
+                    fontWeight: "50",
+                    fontSize: "20px",
+                    marginRight: "6px",
+                  }}
+                />
+                <span>Live Tracking</span>
+              </div>
+            )}
+            {reschedulable === 1 && (
+              <div>
+                <RestoreIcon
+                  style={{
+                    fontWeight: "50",
+                    fontSize: "20px",
+                    marginRight: "6px",
+                  }}
+                />
+                <span>Reschedulable</span>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className={styles.busBoxSection3}>
+          <BottomTabs
+            filledSeats={filledSeats}
+            seatPrice={seatPrice}
+            routeDetails={routeDetails}
+            busId={_id}
+            busArrivalTime={busArrivalTime}
+            busDepartureTime={busDepartureTime}
+            operatorName={operatorName}
+          />
         </div>
       </div>
-      <div className={styles.busBoxSection3}>
-        <BottomTabs
-          filledSeats={filledSeats}
-          seatPrice={seatPrice}
-          routeDetails={routeDetails}
-          busId={_id}
-          busArrivalTime={busArrivalTime}
-          busDepartureTime={busDepartureTime}
-          operatorName={operatorName}
-        />
-      </div>
-    </div>
+      <ReviewsSection
+        routeId={routeDetails._id}
+        busId={_id}
+        currentUserId={null} // Will be passed from parent component
+      />
+    </>
   );
 };
 
