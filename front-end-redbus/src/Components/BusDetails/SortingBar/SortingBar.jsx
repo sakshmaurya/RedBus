@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./SortingBar.module.css";
-import Divider from "@material-ui/core/Divider";
-import SecurityIcon from "@material-ui/icons/Security";
+import Divider from "@mui/material/Divider";
+import SecurityIcon from "@mui/icons-material/Security";
 import { useDispatch } from "react-redux";
 import { updateFilterDetails } from "../../../Redux/FilterAndSort/action";
 
