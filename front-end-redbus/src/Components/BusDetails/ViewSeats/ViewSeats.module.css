@@ -6,16 +6,31 @@
   justify-content: space-around;
   align-items: center;
   background-color: #eeeded;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Dark mode */
+body.dark-mode .mainContainer {
+  background-color: #1a1a1a;
 }
 
 /* container 1.....bus seats */
 .mainContainer1 {
-  width: 460px;
+  width: 100%;
+  max-width: 460px;
   height: 200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: white;
+  flex-shrink: 0;
+}
+
+body.dark-mode .mainContainer1 {
+  background-color: #2d2d2d;
 }
 
 .mainContainer1Left {
@@ -27,6 +42,10 @@
   padding-top: 17px;
 }
 
+body.dark-mode .mainContainer1Left {
+  border-color: #ffffff;
+}
+
 .mainContainer1Right {
   width: 90%;
   height: 90%;
@@ -36,6 +55,11 @@
   justify-content: space-between;
   padding-left: 15px;
   padding-right: 20px;
+  box-sizing: border-box;
+}
+
+body.dark-mode .mainContainer1Right {
+  border-color: #404040;
 }
 
 .mainContainer1Right > div {
@@ -48,11 +72,13 @@
 /* container 2 */
 
 .mainContainer2 {
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   height: 190px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  flex-shrink: 0;
 }
 
 .mainContainer2 > div {
@@ -69,6 +95,11 @@
   text-transform: uppercase;
   margin-bottom: 5px;
   color: #4a4a4a;
+}
+
+body.dark-mode .mainContainer21 > div:nth-child(1),
+body.dark-mode .mainContainer22 > div:nth-child(1) {
+  color: #ffffff;
 }
 
 .mainContainer21 > div:nth-child(2) {
@@ -91,12 +122,18 @@
 /* Container 3 */
 
 .mainContainer3 {
-  width: 470px;
-  height: 400px;
+  width: 100%;
+  max-width: 470px;
+  height: auto;
   padding: 20px 10px;
   margin-top: 30px;
   margin-bottom: 30px;
   background-color: rgb(248, 248, 248);
+  flex-shrink: 0;
+}
+
+body.dark-mode .mainContainer3 {
+  background-color: #2d2d2d;
 }
 
 .mainContainer3 > div {
@@ -110,6 +147,10 @@
   color: #3e3e52;
   display: flex;
   justify-content: space-between;
+}
+
+body.dark-mode .mainContainer31 {
+  color: #ffffff;
 }
 
 .mainContainer31 > div:nth-child(2) {
@@ -135,6 +176,11 @@
   align-items: center;
 }
 
+body.dark-mode .mainContainer32 > div,
+body.dark-mode .mainContainer33 > div {
+  color: #b0b0b0;
+}
+
 .mainContainer34 {
   height: 50px;
   display: flex;
@@ -148,6 +194,10 @@
   font-weight: 700;
 }
 
+body.dark-mode .mainContainer34 > div {
+  color: #ffffff;
+}
+
 .mainContainer34 > div:nth-child(1) {
   font-size: 16px;
 }
@@ -157,6 +207,10 @@
   font-size: 16px;
   color: #4a4a4a;
   font-weight: 700;
+}
+
+body.dark-mode .mainContainer35 {
+  color: #ffffff;
 }
 
 .mainContainer36 {
@@ -170,4 +224,124 @@
   font-size: 14px;
   text-align: right;
   color: #3e3e52;
+}
+
+body.dark-mode .mainContainer36 > div:nth-child(2) {
+  color: #ffffff;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .mainContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .mainContainer1,
+  .mainContainer2,
+  .mainContainer3 {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContainer {
+    padding: 15px;
+    gap: 15px;
+  }
+  
+  .mainContainer1 {
+    height: 180px;
+  }
+  
+  .mainContainer2 {
+    height: auto;
+  }
+  
+  .mainContainer3 {
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .mainContainer31 {
+    font-size: 15px;
+  }
+  
+  .mainContainer34 > div:nth-child(1) {
+    font-size: 15px;
+  }
+  
+  .mainContainer35 {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainContainer {
+    padding: 10px;
+    gap: 10px;
+  }
+  
+  .mainContainer1 {
+    height: 160px;
+  }
+  
+  .mainContainer1Right {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .mainContainer3 {
+    padding: 12px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .mainContainer21 > div:nth-child(1),
+  .mainContainer22 > div:nth-child(1) {
+    font-size: 13px;
+  }
+  
+  .mainContainer31 {
+    font-size: 14px;
+  }
+  
+  .mainContainer31 > div:nth-child(2) {
+    font-size: 12px;
+  }
+  
+  .mainContainer34 > div {
+    font-size: 12px;
+  }
+  
+  .mainContainer34 > div:nth-child(1) {
+    font-size: 14px;
+  }
+  
+  .mainContainer35 {
+    font-size: 14px;
+  }
+  
+  .mainContainer36 > div:nth-child(2) {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  .mainContainer1 {
+    height: 140px;
+  }
+  
+  .mainContainer1Left {
+    width: 15%;
+  }
+  
+  .mainContainer1Right {
+    width: 85%;
+  }
+  
+  .mainContainer21 > div:nth-child(2) {
+    width: 100%;
+  }
 }

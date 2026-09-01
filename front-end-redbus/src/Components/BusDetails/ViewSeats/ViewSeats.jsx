@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./ViewSeats.module.css";
-import DonutSmallIcon from "@material-ui/icons/DonutSmall";
+import DonutSmallIcon from "@mui/icons-material/DonutSmall";
 import { SmallSeat } from "./SmallSeat";
-import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
-import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
-import FiberManualRecordOutlinedIcon from "@material-ui/icons/FiberManualRecordOutlined";
-import Divider from "@material-ui/core/Divider";
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import FiberManualRecordOutlinedIcon from "@mui/icons-material/FiberManualRecordOutlined";
+import Divider from "@mui/material/Divider";
 import { FormDrawer } from "./FormDrawer";
 import { SubRoutes } from "../SelectSubRoutes/SubRoutes";
 import { updateBookingDetails } from "../../../Redux/BookBus/action";
