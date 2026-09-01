@@ -1,7 +1,7 @@
 import React from "react";
-import AirlineSeatReclineExtraIcon from "@material-ui/icons/AirlineSeatReclineExtra";
+import AirlineSeatReclineExtraIcon from "@mui/icons-material/AirlineSeatReclineExtra";
 import styles from "./SmallSeat.module.css";
-import Tooltip from "@material-ui/core/Tooltip";
+import Tooltip from "@mui/material/Tooltip";
 import { useSelector } from "react-redux";
 
 const SmallSeat = ({
@@ -27,7 +27,6 @@ const SmallSeat = ({
   );
 
   const handleSeatBooking = () => {
-    console.log(customerName);
     if (customerName === null) {
       alert("Please Login, To Book Seats");
     } else if (!alreadyBookedSeats.includes(seatNo)) {
