@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./BusServiceDetailsPage.module.css";
-import MusicNoteIcon from "@material-ui/icons/MusicNote";
-import BatteryCharging30Icon from "@material-ui/icons/BatteryCharging30";
-import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
+import MusicNoteIcon from "@mui/icons-material/MusicNote";
+import BatteryCharging30Icon from "@mui/icons-material/BatteryCharging30";
+import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusOnIdThunk } from "../../../Redux/busService/action";
@@ -14,7 +14,6 @@ const BusServiceDetailsPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const currentBus = useSelector((state) => state.busServiceReducer.currentBus);
-  console.log(currentBus);
   const isLoading = useSelector((state) => state.busServiceReducer.isLoading);
   const currentCustomer = useSelector(
     (state) => state.authReducer.currentCustomer
