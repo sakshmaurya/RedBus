@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Styles from "./Payment.module.css";
 import { MdAccountCircle } from "react-icons/md";
 import { MdDateRange } from "react-icons/md";
 import { VscLocation } from "react-icons/vsc";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
-import StripeCheckout from "react-stripe-checkout";
+import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
   const passSeatsArray = useSelector((state) => state.busDetailsReducer.seats);
@@ -27,19 +26,12 @@ const localCustomer = JSON.parse(
 );
 
 const currentCustomer = reduxCustomer || localCustomer;
-
-console.log("Current Customer is:", currentCustomer);
-
-if (!currentCustomer) {
-  console.log("User not logged in");
-}
   const operatorName = useSelector(
     (state) => state.busDetailsReducer.operatorName
   );
   const passengerDetails = useSelector(
     (state) => state.busDetailsReducer.passengerDetails
   );
-  console.log("here passenger details:", passengerDetails);
   const email = useSelector((state) => state.busDetailsReducer.email);
   const fare = useSelector((state) => state.busDetailsReducer.fare);
   const busId = useSelector((state) => state.busDetailsReducer.busId);
@@ -67,18 +59,80 @@ if (!currentCustomer) {
     price: 10,
     productBy: "Facebook",
   });
-  const history = useHistory();
+  const navigate = useNavigate();
 
-  const makePayment = async (token) => {
+  // Mock payment form state
+  const [showPaymentForm, setShowPaymentForm] = useState(false);
+  const [cardDetails, setCardDetails] = useState({
+    cardNumber: "",
+    expiry: "",
+    cvv: "",
+    name: "",
+  });
+  const [processing, setProcessing] = useState(false);
+
+  const handlePaymentSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Basic validation
+    if (cardDetails.cardNumber.length < 16) {
+      alert("Please enter a valid card number");
+      return;
+    }
+    if (cardDetails.expiry.length < 5) {
+      alert("Please enter a valid expiry date (MM/YY)");
+      return;
+    }
+    if (cardDetails.cvv.length < 3) {
+      alert("Please enter a valid CVV");
+      return;
+    }
+    if (cardDetails.name.length < 3) {
+      alert("Please enter cardholder name");
+      return;
+    }
+
+    setProcessing(true);
+    
+    // Simulate payment processing
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    // Create booking after "payment"
+    await makePayment();
+  };
+
+  const makePayment = async () => {
     let myBooking = {};
     // create booking object
- if (!currentCustomer?._id) {
-  alert("Please login again");
-  history.push("/login");
-  return;
-}
+    if (!currentCustomer?._id) {
+      alert("Please login again");
+      navigate("/login");
+      return;
+    }
 
-myBooking.customerId = currentCustomer._id;
+    // Validate required data
+    if (!email || !phoneNumber) {
+      alert("Missing email or phone number. Please go back and fill passenger details.");
+      navigate("/select-bus");
+      return;
+    }
+    if (!departureDetails || !departureDetails.city || !departureDetails.location || !departureDetails.date) {
+      alert("Missing departure details. Please select a bus again.");
+      navigate("/select-bus");
+      return;
+    }
+    if (!arrivalDetails || !arrivalDetails.city || !arrivalDetails.location || !arrivalDetails.date) {
+      alert("Missing arrival details. Please select a bus again.");
+      navigate("/select-bus");
+      return;
+    }
+    if (!passengerDetails || passengerDetails.length === 0) {
+      alert("Missing passenger details. Please fill passenger information.");
+      navigate("/select-bus");
+      return;
+    }
+
+    myBooking.customerId = currentCustomer._id;
     myBooking.passengerDetails = passengerDetails;
     myBooking.email = email;
     myBooking.phoneNumber = phoneNumber;
@@ -95,46 +149,19 @@ myBooking.customerId = currentCustomer._id;
     myBooking.isBusinessTravel = isBusinessTravel;
     myBooking.isInsurance = isInsurance;
     myBooking.isCovidDonated = isCovidDonated;
-    console.log("My booking is:", myBooking);
 
     try {
       let res = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/v1/api/booking`,
         myBooking
       );
-      history.push("/my-profile");
-      console.log("Booking post response: ", res.data);
+      alert("Payment successful! Booking confirmed.");
+      navigate("/my-profile");
     } catch (err) {
       console.log("Error while adding booking to booking collection!", err);
+      alert("Error creating booking. Please try again.");
+      setProcessing(false);
     }
-
-    // const body = {
-    //   token,
-    //   product,
-    // };
-    // const headers = {
-    //   "Content-Type": "application/json",
-    // };
-    // //fire a request to backend
-    // return fetch(`${process.env.REACT_APP_BACKEND_URL}/v1/api/stripe-payments`, {
-    //   method: "POST",
-    //   headers,
-    //   body: JSON.stringify(body),
-    // })
-    //   .then((res) => {
-    //     //console.log("RESPONSE REACT", res);
-    //     // const { status } = res;
-    //     //console.log("STATUS REACT", status);
-    //     //console.log("redirecting:");
-    //     // history.push("/my-profile");
-    //     console.log("hii udit", res);
-    //   })
-    //   .catch((err) => {
-    //     console.log("Error while making payment", err);
-    //     alert(
-    //       "Something went wrong while making payment! Check Internet connection!"
-    //     );
-    //   });
   };
 
   var date = new Date();
@@ -191,19 +218,97 @@ myBooking.customerId = currentCustomer._id;
               Styles.payment__fullContainer_leftContainer_paymentInstruments
             }
           >
-            {/************************ Stripe Payemnt Start ******************************************/}
-            <div className={Styles.Payment__stripe}>
-              <StripeCheckout
-                stripeKey="pk_test_51D9ybxG1hGhZmBxslwCy9OlHcJhpAqtbxdWrzyGfzTScoJ0RQEBJax7X2z8sE0MRAjl9KUn0R9Q0mz6x1ORmS2mg00IfXp80ED"
-                token={makePayment}
-                name="RedBus Booking"
-              >
-                <button className={Styles.Payment__stripe__button}>
-                  Pay With Stripe
+            {!showPaymentForm ? (
+              <div className={Styles.Payment__stripe}>
+                <button
+                  className={Styles.Payment__stripe__button}
+                  onClick={() => setShowPaymentForm(true)}
+                >
+                  Proceed to Payment
                 </button>
-              </StripeCheckout>
-            </div>
-            {/************************ Stripe Payemnt End ******************************************/}
+              </div>
+            ) : (
+              <div className={Styles.paymentFormContainer}>
+                <h3 className={Styles.paymentFormTitle}>Enter Card Details</h3>
+                <form onSubmit={handlePaymentSubmit} className={Styles.paymentForm}>
+                  <div className={Styles.formGroup}>
+                    <label className={Styles.formLabel}>Card Number</label>
+                    <input
+                      type="text"
+                      className={Styles.formInput}
+                      placeholder="4242 4242 4242 4242"
+                      value={cardDetails.cardNumber}
+                      onChange={(e) => setCardDetails({...cardDetails, cardNumber: e.target.value.replace(/\D/g, '')})}
+                      maxLength={16}
+                      required
+                    />
+                  </div>
+                  <div className={Styles.formRow}>
+                    <div className={Styles.formGroup}>
+                      <label className={Styles.formLabel}>Expiry Date</label>
+                      <input
+                        type="text"
+                        className={Styles.formInput}
+                        placeholder="MM/YY"
+                        value={cardDetails.expiry}
+                        onChange={(e) => {
+                          let value = e.target.value.replace(/\D/g, '');
+                          if (value.length >= 2) {
+                            value = value.slice(0, 2) + '/' + value.slice(2);
+                          }
+                          setCardDetails({...cardDetails, expiry: value});
+                        }}
+                        maxLength={5}
+                        required
+                      />
+                    </div>
+                    <div className={Styles.formGroup}>
+                      <label className={Styles.formLabel}>CVV</label>
+                      <input
+                        type="text"
+                        className={Styles.formInput}
+                        placeholder="123"
+                        value={cardDetails.cvv}
+                        onChange={(e) => setCardDetails({...cardDetails, cvv: e.target.value.replace(/\D/g, '')})}
+                        maxLength={4}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className={Styles.formGroup}>
+                    <label className={Styles.formLabel}>Cardholder Name</label>
+                    <input
+                      type="text"
+                      className={Styles.formInput}
+                      placeholder="Name on card"
+                      value={cardDetails.name}
+                      onChange={(e) => setCardDetails({...cardDetails, name: e.target.value})}
+                      required
+                    />
+                  </div>
+                  <div className={Styles.formButtons}>
+                    <button
+                      type="button"
+                      className={Styles.cancelButton}
+                      onClick={() => setShowPaymentForm(false)}
+                      disabled={processing}
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      className={Styles.Payment__stripe__button}
+                      disabled={processing}
+                    >
+                      {processing ? "Processing..." : `Pay Rs. ${passFare}`}
+                    </button>
+                  </div>
+                  <p className={Styles.testCardHint}>
+                    💡 Test with card: 4242 4242 4242 4242, any future date, any 3-digit CVV
+                  </p>
+                </form>
+              </div>
+            )}
             <div className={Styles.choose_payment_heading}>
               Choose Other Payment Method
             </div>
@@ -488,7 +593,24 @@ myBooking.customerId = currentCustomer._id;
                 justifyContent: "space-between",
                 marginTop: "10px",
               }}
-            ></div>
+            >
+              <div className={Styles.travel_specification}>Base Fare</div>
+              <div className={Styles.travel_specification}>
+                Rs. {Math.round(passFare * 0.9)}
+              </div>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginTop: "10px",
+              }}
+            >
+              <div className={Styles.travel_specification}>Seat Booking Fee</div>
+              <div className={Styles.travel_specification}>
+                Rs. {Math.round(passFare * 0.1)}
+              </div>
+            </div>
             <div
               style={{
                 display: "flex",
