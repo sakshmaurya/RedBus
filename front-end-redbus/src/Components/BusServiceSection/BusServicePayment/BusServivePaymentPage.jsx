@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Styles from "./BusPayment.module.css";
 import { MdAccountCircle } from "react-icons/md";
 import { MdDateRange } from "react-icons/md";
@@ -6,8 +6,7 @@ import { VscLocation } from "react-icons/vsc";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
-import StripeCheckout from "react-stripe-checkout";
+import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
   const currentCustomer = useSelector(
@@ -38,51 +37,61 @@ const Payment = () => {
     price: 10,
     productBy: "Facebook",
   });
-  const history = useHistory();
-  const makePayment = async (token) => {
+  const navigate = useNavigate();
+
+  // Mock payment form state
+  const [showPaymentForm, setShowPaymentForm] = useState(false);
+  const [cardDetails, setCardDetails] = useState({
+    cardNumber: "",
+    expiry: "",
+    cvv: "",
+    name: "",
+  });
+  const [processing, setProcessing] = useState(false);
+
+  const handlePaymentSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Basic validation
+    if (cardDetails.cardNumber.length < 16) {
+      alert("Please enter a valid card number");
+      return;
+    }
+    if (cardDetails.expiry.length < 5) {
+      alert("Please enter a valid expiry date (MM/YY)");
+      return;
+    }
+    if (cardDetails.cvv.length < 3) {
+      alert("Please enter a valid CVV");
+      return;
+    }
+    if (cardDetails.name.length < 3) {
+      alert("Please enter cardholder name");
+      return;
+    }
+
+    setProcessing(true);
+    
+    // Simulate payment processing
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    // Create booking after "payment"
+    await makePayment();
+  };
+
+  const makePayment = async () => {
     try {
       let res = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/v1/api/bookingHire`,
         bookingHireObj
       );
-      history.push("/my-profile");
-      console.log("Booking Hire post response: ", res.data);
+      alert("Payment successful! Bus hire booking confirmed.");
+      navigate("/my-profile");
     } catch (err) {
-      console.log(
-        "Error while adding booking hire to booking Hire collection!",
-        err
-      );
+      console.log("Error creating booking:", err);
+      alert("Error creating booking. Please try again.");
+      setProcessing(false);
     }
-
-    // const body = {
-    //   token,
-    //   product,
-    // };
-    // const headers = {
-    //   "Content-Type": "application/json",
-    // };
-    // //fire a request to backend
-    // return fetch(
-    //   `${process.env.REACT_APP_BACKEND_URL}/v1/api/stripe-payments`,
-    //   {
-    //     method: "POST",
-    //     headers,
-    //     body: JSON.stringify(body),
-    //   }
-    // )
-    //   .then((res) => {
-    //     console.log("RESPONSE REACT", res);
-    //     const { status } = res;
-    //     console.log("STATUS REACT", status);
-    //     console.log("redirecting:");
-    //
-    //   })
-    //   .catch((err) => {
-    //     console.log("Error while making payment", err);
-    //     alert(
-    //       "Something went wrong while making payment! Check Internet connection!"
-    //     );
-    //   });
   };
 
   return (
@@ -134,19 +143,97 @@ const Payment = () => {
               Styles.payment__fullContainer_leftContainer_paymentInstruments
             }
           >
-            {/************************ Stripe Payemnt Start ******************************************/}
-            <div className={Styles.Payment__stripe}>
-              <StripeCheckout
-                stripeKey="pk_test_51D9ybxG1hGhZmBxslwCy9OlHcJhpAqtbxdWrzyGfzTScoJ0RQEBJax7X2z8sE0MRAjl9KUn0R9Q0mz6x1ORmS2mg00IfXp80ED"
-                token={makePayment}
-                name="RedBus Booking"
-              >
-                <button className={Styles.Payment__stripe__button}>
-                  Pay With Stripe
+            {!showPaymentForm ? (
+              <div className={Styles.Payment__stripe}>
+                <button
+                  className={Styles.Payment__stripe__button}
+                  onClick={() => setShowPaymentForm(true)}
+                >
+                  Proceed to Payment
                 </button>
-              </StripeCheckout>
-            </div>
-            {/************************ Stripe Payemnt End ******************************************/}
+              </div>
+            ) : (
+              <div className={Styles.paymentFormContainer}>
+                <h3 className={Styles.paymentFormTitle}>Enter Card Details</h3>
+                <form onSubmit={handlePaymentSubmit} className={Styles.paymentForm}>
+                  <div className={Styles.formGroup}>
+                    <label className={Styles.formLabel}>Card Number</label>
+                    <input
+                      type="text"
+                      className={Styles.formInput}
+                      placeholder="4242 4242 4242 4242"
+                      value={cardDetails.cardNumber}
+                      onChange={(e) => setCardDetails({...cardDetails, cardNumber: e.target.value.replace(/\D/g, '')})}
+                      maxLength={16}
+                      required
+                    />
+                  </div>
+                  <div className={Styles.formRow}>
+                    <div className={Styles.formGroup}>
+                      <label className={Styles.formLabel}>Expiry Date</label>
+                      <input
+                        type="text"
+                        className={Styles.formInput}
+                        placeholder="MM/YY"
+                        value={cardDetails.expiry}
+                        onChange={(e) => {
+                          let value = e.target.value.replace(/\D/g, '');
+                          if (value.length >= 2) {
+                            value = value.slice(0, 2) + '/' + value.slice(2);
+                          }
+                          setCardDetails({...cardDetails, expiry: value});
+                        }}
+                        maxLength={5}
+                        required
+                      />
+                    </div>
+                    <div className={Styles.formGroup}>
+                      <label className={Styles.formLabel}>CVV</label>
+                      <input
+                        type="text"
+                        className={Styles.formInput}
+                        placeholder="123"
+                        value={cardDetails.cvv}
+                        onChange={(e) => setCardDetails({...cardDetails, cvv: e.target.value.replace(/\D/g, '')})}
+                        maxLength={4}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className={Styles.formGroup}>
+                    <label className={Styles.formLabel}>Cardholder Name</label>
+                    <input
+                      type="text"
+                      className={Styles.formInput}
+                      placeholder="Name on card"
+                      value={cardDetails.name}
+                      onChange={(e) => setCardDetails({...cardDetails, name: e.target.value})}
+                      required
+                    />
+                  </div>
+                  <div className={Styles.formButtons}>
+                    <button
+                      type="button"
+                      className={Styles.cancelButton}
+                      onClick={() => setShowPaymentForm(false)}
+                      disabled={processing}
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      className={Styles.Payment__stripe__button}
+                      disabled={processing}
+                    >
+                      {processing ? "Processing..." : `Pay Rs. ${price * 500}`}
+                    </button>
+                  </div>
+                  <p className={Styles.testCardHint}>
+                    💡 Test with card: 4242 4242 4242 4242, any future date, any 3-digit CVV
+                  </p>
+                </form>
+              </div>
+            )}
             <div className={Styles.choose_payment_heading}>
               Choose Payment Method
             </div>
