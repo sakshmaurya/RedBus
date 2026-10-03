@@ -1,0 +1,190 @@
+.notificationPreferences {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.notificationPreferences h1 {
+  color: #d84e55;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+.preferencesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.preferenceSection {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sectionHeader h3 {
+  color: #333;
+  margin: 0;
+  font-size: 18px;
+}
+
+.sectionDescription {
+  color: #666;
+  margin: 0 0 20px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.channelOptions {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.channelOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #555;
+}
+
+.channelOption input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.languageOptions {
+  display: flex;
+  gap: 15px;
+}
+
+.langBtn {
+  padding: 10px 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.langBtn:hover {
+  border-color: #d84e55;
+}
+
+.langBtn.active {
+  background: #d84e55;
+  color: white;
+  border-color: #d84e55;
+}
+
+.toggleSwitch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.toggleSwitch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #d84e55;
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+.saveButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.saveButton {
+  background: #d84e55;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.saveButton:hover {
+  background: #c43d44;
+}
+
+.saveButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .notificationPreferences {
+    padding: 15px;
+  }
+
+  .preferenceSection {
+    padding: 20px;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .channelOptions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .languageOptions {
+    flex-direction: column;
+  }
+
+  .langBtn {
+    width: 100%;
+  }
+}
