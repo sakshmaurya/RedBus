@@ -1,0 +1,284 @@
+.community {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.community h1 {
+  color: #d84e55;
+  margin-bottom: 25px;
+  font-size: 32px;
+}
+
+.community h2 {
+  margin-top: 40px;
+  color: #333;
+  font-size: 24px;
+}
+
+.createPost {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.createPost input,
+.createPost textarea {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.createPost textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.createPost button {
+  background: #d84e55;
+  color: white;
+  border: none;
+  padding: 14px;
+  font-size: 17px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.createPost button:hover {
+  background: #b92d3b;
+}
+
+/* Posts */
+
+.postCard {
+  margin-top: 20px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.postCard h3 {
+  color: #d84e55;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.postCard p {
+  margin: 8px 0;
+  color: #444;
+  font-size: 14px;
+}
+
+.postCard img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.postCard button {
+  margin-right: 10px;
+  margin-top: 15px;
+  background: #f5f5f5;
+  color: #333;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.postCard button:hover {
+  background: #d84e55;
+  color: white;
+}
+
+hr {
+  margin: 40px 0;
+}
+
+.commentBox{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+    flex-wrap: wrap;
+}
+
+.commentBox input{
+    flex:1;
+    padding:10px;
+    min-width: 200px;
+    box-sizing: border-box;
+}
+
+.singleComment{
+    background:#f4f4f4;
+    margin-top:10px;
+    padding:10px;
+    border-radius:5px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .community {
+    padding: 30px 15px;
+  }
+  
+  .community h1 {
+    font-size: 28px;
+  }
+  
+  .community h2 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .community {
+    padding: 20px 10px;
+  }
+  
+  .community h1 {
+    font-size: 24px;
+  }
+  
+  .community h2 {
+    font-size: 20px;
+  }
+  
+  .createPost {
+    padding: 20px;
+  }
+  
+  .createPost input,
+  .createPost textarea {
+    font-size: 14px;
+    padding: 10px;
+  }
+  
+  .createPost button {
+    padding: 12px;
+    font-size: 15px;
+  }
+  
+  .postCard {
+    padding: 15px;
+  }
+  
+  .postCard h3 {
+    font-size: 18px;
+  }
+  
+  .postCard p {
+    font-size: 13px;
+  }
+  
+  .postCard button {
+    padding: 6px 12px;
+    font-size: 13px;
+    margin-right: 5px;
+  }
+  
+  .commentBox input {
+    min-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .community {
+    padding: 15px 8px;
+  }
+  
+  .community h1 {
+    font-size: 22px;
+  }
+  
+  .community h2 {
+    font-size: 18px;
+  }
+  
+  .createPost {
+    padding: 15px;
+    gap: 10px;
+  }
+  
+  .createPost input,
+  .createPost textarea {
+    font-size: 13px;
+    padding: 8px;
+  }
+  
+  .createPost textarea {
+    min-height: 100px;
+  }
+  
+  .createPost button {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .postCard {
+    padding: 12px;
+  }
+  
+  .postCard h3 {
+    font-size: 16px;
+  }
+  
+  .postCard p {
+    font-size: 12px;
+  }
+  
+  .postCard button {
+    padding: 5px 10px;
+    font-size: 12px;
+    margin-right: 5px;
+    margin-top: 10px;
+  }
+  
+  .commentBox {
+    flex-direction: column;
+  }
+  
+  .commentBox input {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 320px) {
+  .community {
+    padding: 10px 5px;
+  }
+  
+  .community h1 {
+    font-size: 20px;
+  }
+  
+  .community h2 {
+    font-size: 16px;
+  }
+  
+  .createPost {
+    padding: 12px;
+  }
+  
+  .postCard button {
+    display: block;
+    margin: 5px 0;
+    width: 100%;
+  }
+}
