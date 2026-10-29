@@ -1,0 +1,43 @@
+.star-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.star {
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+  color: #ffd700;
+}
+
+.star.interactive:hover {
+  transform: scale(1.2);
+}
+
+.star.readonly {
+  cursor: default;
+}
+
+.star.filled {
+  color: #ffd700;
+}
+
+.star.empty {
+  color: #d3d3d3;
+}
+
+/* Dark mode */
+body.dark-mode .star.filled {
+  color: #ffd700;
+}
+
+body.dark-mode .star.empty {
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .star-rating {
+    gap: 2px;
+  }
+}
