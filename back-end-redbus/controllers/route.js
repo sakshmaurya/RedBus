@@ -21,6 +21,11 @@ exports.getOneRoute = async (req, res) => {
     );
   });
 
+  // Check if route exists
+  if (!route) {
+    return res.status(404).json({ message: "Route not found" });
+  }
+
   // get all buses for that route
   let buses = await Bus.find();
   let matchedBuses = buses.filter((bus) => {
@@ -45,4 +50,32 @@ exports.getOneRoute = async (req, res) => {
     busIdWithSeatsObj[matchedBuses[i]._id.toString()] = currentBusSeats;
   }
   res.send({ route: route, matchedBuses: matchedBuses, busIdWithSeatsObj });
+};
+
+// Create new route (Admin)
+exports.createRoute = async (req, res) => {
+  try {
+    const { departureLocation, arrivalLocation, duration } = req.body;
+    const newRoute = await Route.create({
+      departureLocation: typeof departureLocation === 'string' ? { name: departureLocation } : departureLocation,
+      arrivalLocation: typeof arrivalLocation === 'string' ? { name: arrivalLocation } : arrivalLocation,
+      duration: Number(duration) || 180
+    });
+    res.status(201).json({ success: true, route: newRoute });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// Delete route (Admin)
+exports.deleteRoute = async (req, res) => {
+  try {
+    const route = await Route.findByIdAndDelete(req.params.id);
+    if (!route) {
+      return res.status(404).json({ success: false, message: "Route not found" });
+    }
+    res.json({ success: true, message: "Route deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
 };
