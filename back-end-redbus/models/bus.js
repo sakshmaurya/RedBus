@@ -15,12 +15,12 @@ const busSchema = new Schema({
   },
   rating: {
     type: [Number],
-    required: true,
+    default: [4.5],
   },
   // fare is manual
   totalSeats: {
     type: Number,
-    required: false,
+    default: 40,
   },
   routes: {
     type: Schema.Types.ObjectId,
@@ -29,16 +29,37 @@ const busSchema = new Schema({
   },
   images: {
     type: String,
-    required: true,
+    default: "https://st.redbus.in/Images/rdc/rdc-redbus-logo.svg",
   },
   liveTracking: {
     type: Number,
-    required: true,
+    default: 1,
   },
   reschedulable: {
     type: Number,
-    required: true,
+    default: 1,
   },
+  // Bus stops for route
+  stops: [{
+    name: String,
+    time: String,
+    sequence: Number
+  }],
+  // Fare per seat
+  fare: {
+    type: Number,
+    required: false,
+  },
+  // Bus status
+  status: {
+    type: String,
+    enum: ['active', 'inactive', 'maintenance'],
+    default: 'active'
+  },
+  // Amenities
+  amenities: [String],
+  // Bus number
+  busNumber: String
 });
 
 module.exports = mongoose.model("Buses", busSchema);
