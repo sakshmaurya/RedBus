@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./Admin.css";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AdminLogin = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +17,7 @@ const AdminLogin = () => {
   role: "admin"
 }));
       alert("Admin Login Successful");
-      history.push("/admin-dashboard");
+      navigate("/admin-dashboard");
     } else {
       alert("Invalid Admin Credentials");
     }
