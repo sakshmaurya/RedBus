@@ -6,7 +6,7 @@ It connects bus travellers with a network of over 2500 bus operators, across Ind
 
 In this project , we have tried to make a perfect clone of redbus.in.
 
-### Live Link :  
+### Live Link :
 
 # Steps to install the project:
 
@@ -22,21 +22,21 @@ In this project , we have tried to make a perfect clone of redbus.in.
 ##  Open the cloned git repo in VS Code and install the required dependencies.
 
 * #### Open a terminal and make sure you are in the working directory folder (Inside redbus folder go to : redbus/front-end-redbus and redbus/back-end-redbus), run this command to install the required project dependencies in both back-end and front-end folder.
-  * npm install   
+  * npm install
 
 * #### Now, Run npm start in back-end-redbus as well as front-end-redbus folder in two separate terminals to start the backend and frontend
 
 * #### Now you can access the app at this URL: http://localhost:3000
 
 ## Technologies used
-  
+
   * React
   * CSS
   * Express
   * MongoDB
   * Mongoose
   * Libraries used
-      
+
       * Redux
       * React-redux
       * Redux-thunk
@@ -51,64 +51,103 @@ In this project , we have tried to make a perfect clone of redbus.in.
       * react-modal
       * react-scripts
       * react-stripe-checkout
-      
-      
-## How to use the product
+      * cloudinary
+      * nodemailer (for notifications)
+      * web-push (for push notifications)
 
+## New Features Added
 
- 1. In order to use the product , you need to do npm start in your console.
+### � Internationalization (i18n)
+- **Multi-Language Support**: English and Hindi languages supported throughout the application
+- **Dynamic Language Switching**: Change language instantly without page reload
+- **Language Persistence**: User language preference saved in database and localStorage
+- **Translation Coverage**: All major UI elements translated including navigation, forms, buttons, and messages
+- **Fallback System**: English as default language for missing translations
+- **Language Selector**: Easy-to-use language selector in the navigation bar
 
-  ![Landing Page](https://github.com/nitansh11/redbus/blob/master/Samples/HomePage1.PNG)
+### 🗺️ Interactive Route Planner
+- **Google Maps Integration**: Real-time route calculation using Google Maps API
+- **Multiple Waypoints**: Add multiple stops between start and destination
+- **Traffic Information**: Real-time traffic data with congestion levels (Low/Moderate/Heavy)
+- **Alternative Routes**: View multiple route options with distance and duration comparison
+- **Route Visualization**: Interactive map display with route polylines and markers
+- **Saved Routes**: Authenticated users can save frequently used routes
+- **Route Management**: Load, view, and delete saved routes
+- **Traffic-Aware ETA**: Estimated travel time based on current traffic conditions
 
- 2. Here you can see our landing page , If you are using this product for the first time , you are a new user and you can login by clicking on dropdown on the right side of navbar and currently we are serving buses between Lucknow and Faizabad, so enter Lucknow in source and Faizabad in destination and select any date as per your choice.
+### 🌙 Dark Mode
+- **Theme Toggle**: Instant switch between light and dark themes
+- **System-Wide Application**: Dark mode applied consistently across all pages and components
+- **Theme Persistence**: User theme preference saved in database and localStorage
+- **Instant Switching**: No page reload required for theme changes
+- **Responsive Design**: Dark mode optimized for desktop, tablet, and mobile
+- **Custom CSS**: Comprehensive dark mode styling for all UI elements
 
-  ![Sign up](https://github.com/nitansh11/redbus/blob/master/Samples/GoogleSignIn.PNG)
+### �🌟 Travel Community
+- **Verified Traveler System**: Users become verified travelers after completing their first booking, enabling them to create community posts
+- **Post Creation**: Verified users can create posts with title, description, route, destination, and images
+- **Image Upload**: Posts support multiple image uploads via Cloudinary
+- **Engagement**: Like and comment on posts with real-time updates
+- **Moderation**: Report inappropriate content for admin review
+- **Trending Posts**: View popular posts based on engagement score (likes × 2 + comments)
+- **Social Sharing**: Share posts via Web Share API, WhatsApp, Facebook, and copy link
+- **Profile Integration**: View community activity stats in profile (posts, likes received, comments)
 
- 3. This page contains the list of all the buses between source and destination.On this page, user can use filtering and sorting as per his requirement.
+### 💬 Travel Forum
+- **Discussion Categories**: Organized forums for routes, destinations, and travel advice
+- **Topic Creation**: Create discussion topics in categories
+- **Replies**: Reply to topics with nested comments
+- **Moderation**: Admin can pin and lock topics
+- **Activity Tracking**: View counts and last activity timestamps
 
-  ![list_of_buses](https://github.com/nitansh11/redbus/blob/master/Samples/listOfbuseswithfilters.PNG)
- 
- 4. Here, you will get all the list of buses acoording to your location and you can also filter them as per your requirement.
+### 🔔 Advanced Notification System
+- **Multi-Channel Delivery**: In-app, email, and push notifications
+- **User Preferences**: Customize notification settings by category and channel
+- **Booking Notifications**: Confirmations, cancellations, schedule changes, journey reminders
+- **Community Notifications**: Likes, comments, and replies on posts
+- **Notification History**: View all notifications with read/unread status
+- **Localization**: Support for English and Hindi languages
+- **Delivery Tracking**: Track notification delivery status with retry mechanism
 
- 5. After this , you can click on the View Seat button to book the seats, and select the seats as per your requirement.
-   Note : You cant select the red seats , since they are already booked.
-  
-   ![seet_booking](https://github.com/nitansh11/redbus/blob/master/Samples/seatBookUi.PNG)
- 
- 6.Now, select the boarding and dropping point and click on the continue button, now a form will open , here you need to enter the passenger details, and click on the Procced To Pay button.
-  
-   ![stripe payment](https://github.com/nitansh11/redbus/blob/master/Samples/StripePayment.PNG)
+## Environment Variables
 
- 7. On this page click on the button Pay with Stripe , here enter your email , card number as 4242 4242 4242 4242 , expiary date as 12/21 and cvv as 1234 and click on the pay button , your seat has been booked :relaxed:
+### Backend (config.env)
+- `DATABASE`: MongoDB connection string
+- `DATABASE_PASSWORD`: MongoDB password
+- `PORT`: Backend server port (default: 8000)
+- `CLOUDINARY_CLOUD_NAME`: Cloudinary cloud name
+- `CLOUDINARY_UPLOAD_PRESET`: Cloudinary upload preset
 
-  8. Now on this page you can see all your bookings.
-  
-  ![list_of_bookings](https://github.com/nitansh11/redbus/blob/master/Samples/ListOfBookings.PNG)
-  
-  9. Next feature that we have implemented is Bus Hire. Click on Bus Hire from the top bar. From this page, user can hire a bus for a round trip.
-  
-  ![bus hire landing page](https://github.com/nitansh11/redbus/blob/master/Samples/bushire1.png)
-  
-  10. On the Bus Hire landing page, click on Outstation, after that user will be asked to enter the few details.After entering those, click on proceed.
+### Frontend (.env.local)
+- `REACT_APP_BACKEND_URL`: Backend API URL
+- `REACT_APP_GOOGLE_MAPS_API_KEY`: Google Maps API key (required for Route Planner)
 
-  ![bus hire form page](https://github.com/nitansh11/redbus/blob/master/Samples/bushire2.png)
-  
-  11. Select a bus as per your choice and click on View Details to proceed.
+## Development Setup
 
-  ![bus select page](https://github.com/nitansh11/redbus/blob/master/Samples/bishire3.png)
-  
-  12.Click on Book, to book that particular vehicle and proceed for the payment.
-  
-  ![bus book page](https://github.com/nitansh11/redbus/blob/master/Samples/bushire4.png)
-  
-  13. On this page click on the button Pay with Stripe , here enter your email , card number as 4242 4242 4242 4242 , expiary date as 12/21 and CVV as 123 and click on the pay button , your bus has been booked :relaxed:
-  
-  ![payment page](https://github.com/nitansh11/redbus/blob/master/Samples/bushire5.png)
+1. Clone the repository
+2. Install backend dependencies: `cd back-end-redbus && npm install`
+3. Install frontend dependencies: `cd front-end-redbus && npm install`
+4. Configure environment variables
+5. Start backend: `cd back-end-redbus && npm start`
+6. Start frontend: `cd front-end-redbus && npm start`
+7. Access application at: http://localhost:3000
 
- 
-### End-notes
- 
-  We have tried our best to give mostly all the functionality available on the actual website.
+## Google Maps API Setup
 
-  
- 
+To enable the Route Planner feature:
+1. Create a Google Cloud Platform project
+2. Enable Maps JavaScript API and Directions API
+3. Create an API key
+4. Add the API key to frontend `.env.local`: `REACT_APP_GOOGLE_MAPS_API_KEY=your_api_key_here`
+5. Restrict the API key for security
+
+## Deployment Notes
+
+- Ensure MongoDB connection string is properly configured
+- Set up Cloudinary for image uploads
+- Configure Google Maps API key for Route Planner
+- Set environment variables for production
+- Build frontend: `npm run build`
+- Deploy backend to a Node.js hosting service
+- Deploy frontend to a static hosting service
+

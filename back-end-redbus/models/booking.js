@@ -15,11 +15,11 @@ const bookingSchema = new Schema({
   ],
   email: {
     type: String,
-    required: true,
+    required: false,
   },
   phoneNumber: {
     type: String,
-    required: true,
+    required: false,
   },
   fare: {
     type: Number,
@@ -28,6 +28,17 @@ const bookingSchema = new Schema({
   status: {
     type: String,
     required: true,
+  },
+  // Journey status for review eligibility
+  journeyStatus: {
+    type: String,
+    enum: ["UPCOMING", "IN_PROGRESS", "COMPLETED", "CANCELLED"],
+    default: "UPCOMING",
+  },
+  // Journey date for completion tracking
+  journeyDate: {
+    type: String,
+    required: false,
   },
   bookingDate: {
     type: String,
@@ -43,16 +54,16 @@ const bookingSchema = new Schema({
     required: true,
   },
   departureDetails: {
-    city: { type: String, required: true },
-    location: { type: String, required: true },
-    time: { type: Number, required: true },
-    date: { type: String, required: true },
+    city: { type: String, required: false },
+    location: { type: String, required: false },
+    time: { type: Number, required: false },
+    date: { type: String, required: false },
   },
   arrivalDetails: {
-    city: { type: String, required: true },
-    location: { type: String, required: true },
-    time: { type: String, required: true },
-    date: { type: String, required: true },
+    city: { type: String, required: false },
+    location: { type: String, required: false },
+    time: { type: String, required: false },
+    date: { type: String, required: false },
   },
   duration: {
     type: String,
