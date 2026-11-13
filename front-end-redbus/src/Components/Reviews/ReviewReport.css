@@ -1,0 +1,239 @@
+.review-report-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.review-report-dialog {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  max-width: 450px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.report-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+  background-color: #f5f5f5;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  background-color: #fff;
+}
+
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #d84f57;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.character-count {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #666;
+  text-align: right;
+}
+
+.error-message {
+  background-color: #fee;
+  color: #c33;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.dialog-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.dialog-actions .btn-cancel,
+.dialog-actions .btn-submit {
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dialog-actions .btn-cancel {
+  background-color: #f5f5f5;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.dialog-actions .btn-cancel:hover:not(:disabled) {
+  background-color: #e0e0e0;
+}
+
+.dialog-actions .btn-submit {
+  background-color: #d84f57;
+  color: white;
+  border: none;
+}
+
+.dialog-actions .btn-submit:hover:not(:disabled) {
+  background-color: #c43e46;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(216, 79, 87, 0.3);
+}
+
+.dialog-actions .btn-cancel:disabled,
+.dialog-actions .btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Dark mode */
+body.dark-mode .review-report-dialog {
+  background-color: #2d2d2d;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .report-header h3 {
+  color: #fff;
+}
+
+body.dark-mode .close-btn {
+  color: #b0b0b0;
+}
+
+body.dark-mode .close-btn:hover {
+  background-color: #3d3d3d;
+}
+
+body.dark-mode .form-group label {
+  color: #b0b0b0;
+}
+
+body.dark-mode .form-group select,
+body.dark-mode .form-group textarea {
+  background-color: #1a1a1a;
+  border-color: #404040;
+  color: #fff;
+}
+
+body.dark-mode .form-group select:focus,
+body.dark-mode .form-group textarea:focus {
+  border-color: #d84f57;
+}
+
+body.dark-mode .character-count {
+  color: #b0b0b0;
+}
+
+body.dark-mode .error-message {
+  background-color: #3d1a1a;
+  color: #ff6b6b;
+}
+
+body.dark-mode .dialog-actions .btn-cancel {
+  background-color: #3d3d3d;
+  color: #fff;
+  border-color: #404040;
+}
+
+body.dark-mode .dialog-actions .btn-cancel:hover:not(:disabled) {
+  background-color: #4d4d4d;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .review-report-dialog {
+    padding: 20px;
+    max-width: 95%;
+  }
+
+  .report-header h3 {
+    font-size: 16px;
+  }
+
+  .dialog-actions {
+    flex-direction: column;
+  }
+
+  .dialog-actions .btn-cancel,
+  .dialog-actions .btn-submit {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .review-report-dialog {
+    padding: 16px;
+  }
+
+  .report-header h3 {
+    font-size: 15px;
+  }
+
+  .form-group select,
+  .form-group textarea {
+    font-size: 13px;
+  }
+}
